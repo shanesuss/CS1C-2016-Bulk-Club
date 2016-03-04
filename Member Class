@@ -1,0 +1,32 @@
+#include <iomanip>
+#include <iostream>
+#include <string>
+#include "Date.h"
+using namespace std;
+
+class Member
+{
+public:
+	Member();
+	~Member();
+private:
+	string name;
+	int    idNum;
+	string memberType;
+	Date   expDate;
+	double totalSpent;
+	double rebateAmnt;
+};
+
+Member::~Member() {}
+
+Member::Member()
+{
+	name = "";
+	idNum = 0;
+	memberTYpe = "";
+	expDate.SetDate(0,0,0);
+	totalSpent = 0.0;
+	rebateAmnt = 0.0;
+}
+
