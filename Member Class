@@ -8,6 +8,7 @@ class Member
 {
 public:
 	Member();
+	Member(string newName, int newID, string newType, Date newDate, double newTotal, double newRebate);
 	~Member();
 private:
 	string name;
@@ -30,3 +31,12 @@ Member::Member()
 	rebateAmnt = 0.0;
 }
 
+Member::Member(string newName, int newID, string newType, Date newDate, double newTotal, double newRebate)
+{
+	name = newName;
+	idNum = newID;
+	memberType = newType;
+	expDate = newDate;
+	totalSpent = newTotal;
+	rebateAmnt = newRebate;
+}
