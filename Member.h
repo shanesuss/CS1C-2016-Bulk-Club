@@ -54,7 +54,7 @@ public:
 	/* SetTotalSpent - change totalSpent */
 	void SetTotalSpent(double newTotalSpent);
 
-	/* AddPurchase - adds newPurchase to totalSpent (i.e. a new transaction)
+	/* AddPurchase - adds newPurchase to totalSpent (i.e. a new transaction) */
 	void AddPurchase(double newPurchase);
 private:
 	string name;
