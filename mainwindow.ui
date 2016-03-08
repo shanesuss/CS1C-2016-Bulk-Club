@@ -6,28 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
-    <height>560</height>
+    <width>421</width>
+    <height>620</height>
    </rect>
-  </property>
-  <property name="font">
-   <font>
-    <family>Terminus</family>
-    <pointsize>11</pointsize>
-   </font>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
-  </property>
-  <property name="autoFillBackground">
-   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>10</y>
+      <y>0</y>
       <width>560</width>
       <height>720</height>
      </rect>
@@ -41,11 +32,11 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tab_3">
+    <widget class="QWidget" name="tab_4">
      <attribute name="title">
       <string>Sales Report</string>
      </attribute>
-     <widget class="QTextBrowser" name="textBrowser_4">
+     <widget class="QTextBrowser" name="textBrowser_5">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -55,7 +46,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget_5">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -64,23 +55,23 @@
         <height>93</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
-        <widget class="QPushButton" name="pushButton_5">
+        <widget class="QPushButton" name="pushButton_8">
          <property name="text">
           <string>Sales Report</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_6">
+        <widget class="QPushButton" name="pushButton_9">
          <property name="text">
           <string>Membership Report</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_7">
+        <widget class="QPushButton" name="pushButton_10">
          <property name="text">
           <string>???</string>
          </property>
@@ -89,11 +80,11 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="tab_5">
      <attribute name="title">
       <string>Inventory</string>
      </attribute>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -106,7 +97,7 @@
        <string>Inventory items</string>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser_3">
+     <widget class="QTextBrowser" name="textBrowser_6">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -117,11 +108,11 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="tab_6">
      <attribute name="title">
       <string>Memberships</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget_6">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -130,20 +121,20 @@
         <height>213</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="label_5">
          <property name="text">
           <string>Members</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QTextBrowser" name="textBrowser"/>
+        <widget class="QTextBrowser" name="textBrowser_7"/>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget_7">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -152,20 +143,20 @@
         <height>213</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_7">
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="label_6">
          <property name="text">
           <string>Executives</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QTextBrowser" name="textBrowser_2"/>
+        <widget class="QTextBrowser" name="textBrowser_8"/>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget_8">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -174,30 +165,30 @@
         <height>125</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <layout class="QVBoxLayout" name="verticalLayout_8">
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="pushButton_11">
          <property name="text">
           <string>Add</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="pushButton_12">
          <property name="text">
           <string>Delete</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="pushButton_13">
          <property name="text">
           <string>qqqqq</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="pushButton_14">
          <property name="text">
           <string>aaa</string>
          </property>
@@ -213,33 +204,10 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>451</width>
+     <width>421</width>
      <height>24</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuSwagger">
-    <property name="title">
-     <string>swagger</string>
-    </property>
-    <addaction name="actionTest"/>
-    <addaction name="actionA"/>
-    <addaction name="actionB"/>
-    <addaction name="actionAnother"/>
-    <addaction name="actionC"/>
-   </widget>
-   <widget class="QMenu" name="menuFor">
-    <property name="title">
-     <string>for</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuSure">
-    <property name="title">
-     <string>sure</string>
-    </property>
-   </widget>
-   <addaction name="menuSwagger"/>
-   <addaction name="menuFor"/>
-   <addaction name="menuSure"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -250,31 +218,6 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionTest">
-   <property name="text">
-    <string>Test..</string>
-   </property>
-  </action>
-  <action name="actionAnother">
-   <property name="text">
-    <string>Another</string>
-   </property>
-  </action>
-  <action name="actionA">
-   <property name="text">
-    <string>A</string>
-   </property>
-  </action>
-  <action name="actionB">
-   <property name="text">
-    <string>B</string>
-   </property>
-  </action>
-  <action name="actionC">
-   <property name="text">
-    <string>C</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
