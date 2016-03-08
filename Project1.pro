@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2016-03-02T15:30:49
+# Project created by QtCreator 2016-03-07T15:51:45
 #
 #-------------------------------------------------
 
@@ -13,8 +13,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    Date.cpp \
+    Member.cpp \
+    Executive.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    Date.h \
+    Member.h \
+    Executive.h
 
 FORMS    += mainwindow.ui
