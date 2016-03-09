@@ -57,9 +57,9 @@ public:
     /* AddPurchase - adds newPurchase to totalSpent (i.e. a new transaction) */
     void AddPurchase(double newPurchase);
 private:
-    qstring name;
+    string name;
     int    idNum;
-    qstring memberType;
+    string memberType;
     Date   expDate;
     double totalSpent;
 };
