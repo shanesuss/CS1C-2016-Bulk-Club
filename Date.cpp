@@ -49,7 +49,7 @@ int Date::GetDay() const
   return dateDay;
 }
 
-string Date::displayDate() const
+string Date::DisplayDate() const
 {
   ostringstream output;
   if(dateMonth < 10)

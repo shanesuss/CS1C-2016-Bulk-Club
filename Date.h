@@ -47,6 +47,6 @@ private:
   int dateMonth;
   int dateDay;
   int dateYear;
-);
+};
 
 #endif /* DATE_H_ */
