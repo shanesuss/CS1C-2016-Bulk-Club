@@ -1,3 +1,10 @@
+/***********************************************
+ * Name: Kayvon Haghighi
+ * Class: CS 1C
+ * Project: 1
+************************************************/
+
+
 #include <iomanip>
 #include <iostream>
 #include <string>
