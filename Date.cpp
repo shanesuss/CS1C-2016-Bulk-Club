@@ -64,3 +64,80 @@ string Date::DisplayDate() const
   output << dateDay << '/' << dateYear;
   return output.str();
 }
+
+bool Date::operator<(Date compareto) const
+{
+	bool result;
+
+	if(this->GetYear() < compareto.GetYear())
+	{
+		result = true;
+	}
+	else if(this->GetYear() == compareto.GetYear())
+	{
+		if(this->GetMonth() < compareto.GetMonth())
+		{
+			result = true;
+		}
+		if(this->GetMonth() == compareto.GetMonth())
+		{
+			if(this->GetDay() < compareto.GetDay())
+			{
+				result = true;
+			}
+			else
+			{
+				result = false;
+			}
+		}
+		else
+		{
+			result = false;
+		}
+	}
+	else
+	{
+		result = false;
+	}
+
+	return result;
+}
+
+
+bool Date::operator>(Date compareto) const
+{
+	bool result;
+
+	if(this->GetYear() > compareto.GetYear())
+		{
+			result = true;
+		}
+		else if(this->GetYear() == compareto.GetYear())
+		{
+			if(this->GetMonth() > compareto.GetMonth())
+			{
+				result = true;
+			}
+			if(this->GetMonth() == compareto.GetMonth())
+			{
+				if(this->GetDay() > compareto.GetDay())
+				{
+					result = true;
+				}
+				else
+				{
+					result = false;
+				}
+			}
+			else
+			{
+				result = false;
+			}
+		}
+		else
+		{
+			result = false;
+		}
+
+	return result;
+}
