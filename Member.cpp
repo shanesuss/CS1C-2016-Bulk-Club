@@ -11,7 +11,7 @@ Member::Member()
     totalSpent = 0.0;
 }
 
-Member::Member(string newName, int newID, string newType, Date newDate, double newTotal)
+Member::Member(QString newName, int newID, QString newType, Date newDate, double newTotal)
 {
     name = newName;
     idNum = newID;
@@ -36,18 +36,18 @@ int Member::GetId() const
     return idNum;
 }
 
-string Member::GetMemberInfo() const
+QString Member::GetMemberInfo() const
 {
     // to be written later
     return "";
 }
 
-string Member::GetMemberType() const
+QString Member::GetMemberType() const
 {
     return memberType;
 }
 
-string Member::GetName() const
+QString Member::GetName() const
 {
     return name;
 }
@@ -67,7 +67,7 @@ void Member::SetID(int newId)
     idNum = newId;
 }
 
-void Member::SetMemberType(string newMemberType)
+void Member::SetMemberType(QString newMemberType)
 {
     memberType = newMemberType;
 }

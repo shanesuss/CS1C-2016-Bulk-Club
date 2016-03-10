@@ -4,7 +4,7 @@
  * Project: 1
 ************************************************/
 
-
+#include <QString>
 #include <iomanip>
 #include <iostream>
 #include <string>
@@ -20,7 +20,7 @@ public:
     Member();
 
     /* Non-Default Constructor - Initialize with referenced values */
-    Member(string newName, int newID, string newType, Date newDate, double newTotal);
+    Member(QString newName, int newID, QString newType, Date newDate, double newTotal);
 
     /* Destructor - delete instance of object */
     ~Member();
@@ -28,13 +28,13 @@ public:
 
 /* Accessors */
     /* GetName - return name */
-    string GetName() const;
+    QString GetName() const;
 
     /* GetId - return idNum */
     int GetId() const;
 
     /* GetMemberType - return memberType */
-    string GetMemberType() const;
+    QString GetMemberType() const;
 
     /* GetExpirationDate - return instance of expDate */
     Date GetExpirationDate() const;
@@ -43,7 +43,7 @@ public:
     double GetTotalSpent() const;
 
     /* GetMemberInfo - return formatted list of user info */
-    string GetMemberInfo() const;
+    QString GetMemberInfo() const;
 
 /* Modifiers */
     /* SetName - change name */
@@ -53,7 +53,7 @@ public:
     void SetID(int newId);
 
     /* SetMemberType - change memberType */
-    void SetMemberType(string newMemberType);
+    void SetMemberType(QString newMemberType);
 
     /* SetExpirationDate - change expDate */
     void SetExpirationDate(Date newExpDate);
@@ -64,9 +64,9 @@ public:
     /* AddPurchase - adds newPurchase to totalSpent (i.e. a new transaction) */
     void AddPurchase(double newPurchase);
 private:
-    string name;
+    QString name;
     int    idNum;
-    string memberType;
+    QString memberType;
     Date   expDate;
     double totalSpent;
 };
