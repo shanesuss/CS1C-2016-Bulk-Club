@@ -1,10 +1,49 @@
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
 
-class Executive
+#include "regular.h"
+#include "date.h"
+
+const float REBATE_AMT = .035;
+
+class Executive: public Regular
 {
 public:
-    Executive();
+    Executive(QString newName,
+              double  newNum,
+              QString newType,
+              Date    newDate,
+              float   newSpent,
+              float   newRebate);
+
+    ~Executive();
+
+    void ChangeName(QString newName);
+
+    void ChangeMemNum(double newMemNum);
+
+    void ChangeType(QString newType);
+
+    void ChangeExpDate(Date newDate);
+
+    void ChangeTotSpent(float newSpent);
+
+    void UpdateRebate(float newRebate);
+    
+     QString GetName() const;
+
+    double GetMemNum() const;
+
+    QString GetNewType() const;
+
+    Date GetDate() const;
+
+    float GetTotSpent() const;
+    
+    float GetRebate() const;
+
+private:
+    float rebate;
 };
 
 #endif // EXECUTIVE_H
