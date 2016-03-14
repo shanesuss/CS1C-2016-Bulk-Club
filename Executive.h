@@ -18,19 +18,19 @@ public:
 
     ~Executive();
 
-    void ChangeType(QString newType);
+    //void ChangeType(QString newType);
 
     void ChangeTotSpent(float newSpent);
 
     void UpdateRebate(float newRebate);
     
-     QString GetName() const;
+    // QString GetName() const;
 
-    double GetMemNum() const;
+    //double GetMemNum() const;
 
-    QString GetNewType() const;
+    //QString GetNewType() const;
 
-    Date GetDate() const;
+    //Date GetDate() const;
 
     float GetTotSpent() const;
     
