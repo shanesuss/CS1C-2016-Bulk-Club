@@ -63,6 +63,9 @@ public:
 
     /* AddPurchase - adds newPurchase to totalSpent (i.e. a new transaction) */
     void AddPurchase(double newPurchase);
+    
+    bool operator<(Member compareto) const;
+    bool operator>(Member compareto) const;
 private:
     QString name;
     int    idNum;
