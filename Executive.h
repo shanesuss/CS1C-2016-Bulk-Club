@@ -1,14 +1,14 @@
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
 
-#include "regular.h"
-#include "date.h"
+#include "Member.h"
+#include "Date.h"
 
 const float REBATE_AMT = .035;
 
-class Executive: public Regular
-{
+class Executive: public Member{
 public:
+    Executive();
     Executive(QString newName,
               double  newNum,
               QString newType,
@@ -18,13 +18,7 @@ public:
 
     ~Executive();
 
-    void ChangeName(QString newName);
-
-    void ChangeMemNum(double newMemNum);
-
     void ChangeType(QString newType);
-
-    void ChangeExpDate(Date newDate);
 
     void ChangeTotSpent(float newSpent);
 
