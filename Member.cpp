@@ -33,13 +33,13 @@ Date Member::GetExpirationDate() const
 
 bool Member::operator>(Member compareto) const
 {
-	if(idNum > compareto->idNum) { return true; }
+    if(idNum > compareto.idNum) { return true; }
 	else { return false; } 
 }
 
 bool Member::operator<(Member compareto) const
 {
-	if(idNum < compareto->idNum) { return true; }
+    if(idNum < compareto.idNum) { return true; }
 	else { return false; } 
 }
 

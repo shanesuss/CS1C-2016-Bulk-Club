@@ -20,9 +20,8 @@ public:
 
     //void ChangeType(QString newType);
 
-    void ChangeTotSpent(float newSpent);
+    void SetTotalSpent(float newSpent);
 
-    void UpdateRebate(float newRebate);
     
     // QString GetName() const;
 
@@ -32,12 +31,13 @@ public:
 
     //Date GetDate() const;
 
-    float GetTotSpent() const;
     
     float GetRebate() const;
 
 private:
     float rebate;
+
+    void UpdateRebate();
 };
 
 #endif // EXECUTIVE_H
