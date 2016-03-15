@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTextStream>
+#include <QFile>
+#include <string>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +21,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    
+    void InitializeMemberList();
+
 };
 
 #endif // MAINWINDOW_H
