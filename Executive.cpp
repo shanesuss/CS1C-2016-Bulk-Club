@@ -3,17 +3,17 @@
 Executive::Executive() :Regular()
 {
     rebate = 0;
+    memberType = "Executive";
 }
 
 Executive::Executive(QString newName,
                      double  newNum,
-                     QString newType,
                      Date    newDate,
-                     float   newSpent,
-                     float   newRebate)
-                     :Regular(newName,newNum,newType,newDate,newSpent)
+                     float   newSpent)
+                     :Regular(newName,newNum,newDate,newSpent)
 {
-    rebate = newRebate;
+    UpdateRebate();
+    memberType = "Executive";
 }
 
 Executive::~Executive() {}
@@ -22,12 +22,10 @@ void Executive::SetMember(QString newName,
                           double  newNum,
                           QString newType,
                           Date    newDate,
-                          float   newSpent,
-                          float   newRebate)
+                          float   newSpent)
 {
-    Regular::SetMember(newName,newNum,newType,newDate,newSpent);
-
-    rebate = newRebate;
+    Regular::SetMember(newName,newNum,newDate,newSpent);
+    UpdateRebate();
 }
 
 void Executive::SetTotalSpent(float newSpent)
