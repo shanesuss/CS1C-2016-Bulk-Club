@@ -32,6 +32,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
+    QList<Executive> execMemList;
+    QList<Regular>   regMemList;
+    
     void InitializeMemberList();
 };
 
