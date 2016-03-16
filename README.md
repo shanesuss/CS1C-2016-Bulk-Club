@@ -6,8 +6,5 @@ By viewing this you are agreeing to the terms of services.
 
 
 Members:
-Kayvon Haghighi
-Shane Sussman
-Omar Kermiche
-Jake Estrada
+Jake Estrada, Omar Kermiche, Kayvon Haghighi, Shane Sussman
  
