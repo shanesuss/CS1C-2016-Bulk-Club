@@ -1,7 +1,34 @@
 #include "Executive.h"
 
-Executive::Executive()
-{}
+Executive::Executive() :Regular()
+{
+    rebate = 0;
+}
+
+Executive::Executive(QString newName,
+                     double  newNum,
+                     QString newType,
+                     Date    newDate,
+                     float   newSpent,
+                     float   newRebate)
+                     :Regular(newName,newNum,newType,newDate,newSpent)
+{
+    rebate = newRebate;
+}
+
+Executive::~Executive() {}
+
+void Executive::SetMember(QString newName,
+                          double  newNum,
+                          QString newType,
+                          Date    newDate,
+                          float   newSpent,
+                          float   newRebate)
+{
+    Regular::SetMember(newName,newNum,newType,newDate,newSpent);
+
+    rebate = newRebate;
+}
 
 void Executive::SetTotalSpent(float newSpent)
 {
