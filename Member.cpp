@@ -78,7 +78,7 @@ void Member::SetID(int newId)
 {
     idNum = newId;
 }
-
+/*
 void Member::SetMemberType(QString newMemberType)
 {
     memberType = newMemberType;
@@ -87,7 +87,7 @@ void Member::SetMemberType(QString newMemberType)
 void Member::SetName(int newName)
 {
     name = newName;
-}
+}*/
 
 void Member::SetTotalSpent(double newTotalSpent)
 {
