@@ -6,16 +6,16 @@ Member::Member()
 {
     name = "";
     idNum = 0;
-    memberType = "";
+    memberType = "Member";
     expDate.SetDate(0,0,0);
     totalSpent = 0.0;
 }
 
-Member::Member(QString newName, int newID, QString newType, Date newDate, double newTotal)
+Member::Member(QString newName, int newID, Date newDate, double newTotal)
 {
     name = newName;
     idNum = newID;
-    memberType = newType;
+    memberType = "Member";
     expDate = newDate;
     totalSpent = newTotal;
 }
