@@ -22,7 +22,13 @@ public:
 
     void SetTotalSpent(float newSpent);
 
-    
+    void SetMember(QString newName,
+                   double  newNum,
+                   QString newType,
+                   Date    newDate,
+                   float   newSpent,
+                   float   newRebate);
+                   
     // QString GetName() const;
 
     //double GetMemNum() const;
