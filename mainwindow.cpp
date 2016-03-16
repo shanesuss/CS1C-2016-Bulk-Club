@@ -15,9 +15,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::InitializeMemberList()
 {
-    QList<Regular> regMemList;
-
-    QFile       shoppers("BulkClubMembers.txt");
+    QFile       shoppers(":/BulkClubMembers.txt");
     QTextStream infile(&shoppers);
     QString     memName;
     QString     memNum;
@@ -29,47 +27,51 @@ void MainWindow::InitializeMemberList()
     double      memNumber;
     Date        currDate(newMonth,newDay,newYear);
     Regular     newRegMem;
+    Executive   newExecMem;
     bool        ok;
 
     //open the text file to read from
-    shoppers.open(QIODevice::ReadOnly | QIODevice::Text);
+    shoppers.open(QIODevice::ReadOnly);
 
-    qDebug()<<"shopers file open";
     //will keep reading until the end of the file is reached &
     //will read line by line and store info as a QString which
     //will then be used to convert to whatever data type is
     //needed
-
-    memName = infile.readLine();
-
-    while(!shoppers.atEnd())
+    while(!infile.atEnd())
     {
-       memName = infile.readLine();
+        memName = infile.readLine();
 
-       memNum = infile.readLine();
-       memNumber = memNum.toDouble();
+        memNum = infile.readLine();
+        memNumber = memNum.toDouble();
 
-       memType = infile.readLine();
+        memType = infile.readLine();
 
-       memExpDate = infile.readLine();
+        memExpDate = infile.readLine();
 
-       //splits the date into month, day and year
-       QStringList dateStr = memExpDate.split("/");
+        //splits the date into month, day and year
+        QStringList dateStr = memExpDate.split("/");
 
-       dateStr.at(0).toInt(&ok, 10);
-       dateStr.at(1).toInt(&ok, 10);
-       dateStr.at(2).toInt(&ok, 10);
+        dateStr.at(0).toInt(&ok, 10);
+        dateStr.at(1).toInt(&ok, 10);
+        dateStr.at(2).toInt(&ok, 10);
 
-       Date newDate(dateStr.at(0).toInt(&ok, 10),
-                    dateStr.at(1).toInt(&ok, 10),
-                    dateStr.at(2).toInt(&ok, 10));
+        Date newDate(dateStr.at(0).toInt(&ok, 10),
+                     dateStr.at(1).toInt(&ok, 10),
+                     dateStr.at(2).toInt(&ok, 10));
 
-       //set info for member
-        newRegMem.SetMember(memName,memNumber,memType,newDate,0);
+        //set info for specific member
+         newRegMem.SetMember(memName,memNumber,memType,newDate,0);
 
-        //add member to list
-        regMemList.append(newRegMem);
-     }
+         if(memType == "Executive")
+         {
+             newExecMem.SetMember(memName,memNumber,memType,newDate,0,0);
+         }
+         else if(memType == "Regular")
+         {
+             newRegMem.SetMember(memName,memNumber,memType,newDate,0);
+         }
 
-     shoppers.close();
-}
+         //add member to list
+         regMemList.append(newRegMem);
+         execMemList.append(newExecMem);
+    }
