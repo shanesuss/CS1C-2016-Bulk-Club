@@ -26,7 +26,7 @@ void MainWindow::InitializeMemberList()
     int         newYear;
     double      memNumber;
     Date        currDate(newMonth,newDay,newYear);
-    Regular     newRegMem;
+    Member      newRegMem;
     Executive   newExecMem;
     bool        ok;
 
