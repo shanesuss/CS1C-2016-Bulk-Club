@@ -60,18 +60,19 @@ void MainWindow::InitializeMemberList()
                      dateStr.at(2).toInt(&ok, 10));
 
         //set info for specific member
-         newRegMem.SetMember(memName,memNumber,memType,newDate,0);
+         newRegMem.SetMember(memName,memNumber,newDate,0);
 
          if(memType == "Executive")
          {
-             newExecMem.SetMember(memName,memNumber,memType,newDate,0,0);
+             newExecMem.SetMember(memName,memNumber,newDate,0);
          }
          else if(memType == "Regular")
          {
-             newRegMem.SetMember(memName,memNumber,memType,newDate,0);
+             newRegMem.SetMember(memName,memNumber,newDate,0);
          }
 
          //add member to list
          regMemList.append(newRegMem);
-         execMemList.append(newExecMem);
+         execMemList.append(newExecMem);        
     }
+}
