@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "regular.h"
-#include "executive.h"
+#include "Member.h"
+#include "Executive.h"
 #include "date.h"
 #include <QApplication>
 #include <iostream>
@@ -33,7 +33,7 @@ private:
     Ui::MainWindow *ui;
 
     QList<Executive> execMemList;
-    QList<Regular>   regMemList;
+    QList<Member>   regMemList;
     
     void InitializeMemberList();
 };
