@@ -2,7 +2,6 @@
 #define EXECUTIVE_H
 
 #include "Member.h"
-#include "Date.h"
 
 const float REBATE_AMT = .035;
 
@@ -11,33 +10,32 @@ public:
     Executive();
     Executive(QString newName,
               double  newNum,
-              QString newType,
               Date    newDate,
-              float   newSpent,
-              float   newRebate);
+              float   newSpent);
 
     ~Executive();
 
     //void ChangeType(QString newType);
 
-    void SetTotalSpent(float newSpent);
-
     void SetMember(QString newName,
                    double  newNum,
-                   QString newType,
                    Date    newDate,
-                   float   newSpent,
-                   float   newRebate);
+                   float   newSpent);
+
+    void SetTotalSpent(float newSpent);
                    
-    // QString GetName() const;
+    QString GetName() const;
 
-    //double GetMemNum() const;
+    double GetId() const;
 
-    //QString GetNewType() const;
+    double GetMemNum() const;
 
-    //Date GetDate() const;
+    QString GetNewType() const;
 
-    
+    Date GetDate() const;
+
+    float GetTotalSpent() const;
+
     float GetRebate() const;
 
 private:
