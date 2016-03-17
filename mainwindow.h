@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "Member.h"
+#include "member.h"
 #include "Executive.h"
 #include "date.h"
 #include <QApplication>
