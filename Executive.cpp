@@ -7,9 +7,9 @@ Executive::Executive() :Member()
 }
 
 Executive::Executive(QString newName,
-                     double  newNum,
+                     int  newNum,
                      Date    newDate,
-                     float   newSpent)
+                     double   newSpent)
                      :Member(newName,newNum,newDate,newSpent)
 {
     UpdateRebate();
@@ -19,9 +19,9 @@ Executive::Executive(QString newName,
 Executive::~Executive() {}
 
 void Executive::SetMember(QString newName,
-                          double  newNum,
+                          int  newNum,
                           Date    newDate,
-                          float   newSpent)
+                          double   newSpent)
 {
     Member::SetMember(newName,newNum,newDate,newSpent);
     UpdateRebate();
@@ -43,7 +43,7 @@ QString Executive::GetName() const
     return Member::GetName();
 }
 
-double Executive::GetId() const
+int Executive::GetId() const
 {
     return Member::GetId();
 }

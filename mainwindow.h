@@ -2,9 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "member.h"
+#include "Member.h"
 #include "Executive.h"
-#include "date.h"
+#include "Date.h"
 #include <QApplication>
 #include <iostream>
 #include <QTextStream>

@@ -24,7 +24,7 @@ void MainWindow::InitializeMemberList()
     int         newMonth;
     int         newDay;
     int         newYear;
-    double      memNumber;
+    int      memNumber;
     Date        currDate(newMonth,newDay,newYear);
     Member      newRegMem;
     Executive   newExecMem;
@@ -42,7 +42,7 @@ void MainWindow::InitializeMemberList()
         memName = infile.readLine();
 
         memNum = infile.readLine();
-        memNumber = memNum.toDouble();
+        memNumber = memNum.toInt();
 
         memType = infile.readLine();
 
@@ -60,15 +60,15 @@ void MainWindow::InitializeMemberList()
                      dateStr.at(2).toInt(&ok, 10));
 
         //set info for specific member
-         newRegMem.SetMember(memName,memNumber,newDate,0);
+         newRegMem = Member(memName,memNumber,newDate,0.0);
 
          if(memType == "Executive")
          {
-             newExecMem.SetMember(memName,memNumber,newDate,0);
+             newExecMem.SetMember(memName,memNumber,newDate,0.0);
          }
          else if(memType == "Regular")
          {
-             newRegMem.SetMember(memName,memNumber,newDate,0);
+             newRegMem.SetMember(memName,memNumber,newDate,0.0);
          }
 
          //add member to list

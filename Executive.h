@@ -9,24 +9,24 @@ class Executive: public Member{
 public:
     Executive();
     Executive(QString newName,
-              double  newNum,
+              int  newNum,
               Date    newDate,
-              float   newSpent);
+              double   newSpent);
 
     ~Executive();
 
     //void ChangeType(QString newType);
 
     void SetMember(QString newName,
-                   double  newNum,
+                   int newNum,
                    Date    newDate,
-                   float   newSpent);
+                   double   newSpent);
 
     void SetTotalSpent(float newSpent);
                    
     QString GetName() const;
 
-    double GetId() const;
+    int GetId() const;
 
     double GetMemNum() const;
 

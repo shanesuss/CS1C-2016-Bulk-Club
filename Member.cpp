@@ -94,3 +94,10 @@ void Member::SetTotalSpent(double newTotalSpent)
     totalSpent = newTotalSpent;
 }
 
+void Member::SetMember(QString newName, int newNum, Date newDate, double newSpent)
+{
+    name = newName;
+    idNum = newNum;
+    expDate = newDate;
+    totalSpent = newSpent;
+}
