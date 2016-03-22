@@ -69,3 +69,12 @@ QString MemberList::GetMemberList() const
     }
     return tempInfo;
 }
+
+int MemberList::SearchMember(int idNum) const
+{
+    for (unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetId() == idNum) { return i;}
+    }
+    return -1;
+}

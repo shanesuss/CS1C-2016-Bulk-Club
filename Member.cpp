@@ -50,8 +50,8 @@ int Member::GetId() const
 
 QString Member::GetMemberInfo() const
 {
-    // to be written later
-    return "";
+    ostringstream output;
+    output << "| " << name << " | " << idNum << " | " << totalSpent << endl;
 }
 
 QString Member::GetMemberType() const
@@ -78,16 +78,16 @@ void Member::SetID(int newId)
 {
     idNum = newId;
 }
-/*
+
 void Member::SetMemberType(QString newMemberType)
 {
     memberType = newMemberType;
 }
 
-void Member::SetName(int newName)
+void Member::SetName(string newName)
 {
     name = newName;
-}*/
+}
 
 void Member::SetTotalSpent(double newTotalSpent)
 {
