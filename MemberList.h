@@ -1,6 +1,36 @@
 #ifndef MEMBERLIST_H
 #define MEMBERLIST_H
 
+/*Example cases:
+ *
+ * while(inFile){
+ *
+ * output >> tempName;
+ * output >> tempId;
+ * output >> tempMemberType;
+ * (etc)
+ *
+ * if(tempMemberType == "Executive")
+ * {
+ *   Member tempMember = Member(tempName, tempId, etc);
+ *   myMemberList.AddMember(tempMember);
+ * }
+ *  else
+ * {
+ *  Executive tempExecutive = Executive(tempName, tempId, etc);
+ *  myMemberList.AddMember(tempMember);
+ * }
+ * }
+ * #######
+ * cout << "Please enter the ID number of your employee:"
+ * cin >> input;
+ * try{ myMemberList.GetMember(input);}
+ * catch (int e) { cout << "Error: member not in list.";}
+ *
+ */
+
+
+
 #include "Executive.h"
 #include <vector>
 #include <QString>
