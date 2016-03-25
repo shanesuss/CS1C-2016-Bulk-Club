@@ -22,6 +22,19 @@ bool MemberList::DeleteMember(int idNum)
     return false;
 }
 
+bool MemberList::DeleteMember(string searchName)
+{
+    forf(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetName() == searchName)
+        {
+            memberList.erase(memberList.begin() + i)
+            return true;
+        }
+    }
+    return false;
+}
+
 QString MemberList::GetExecutiveOnlyList() const
 {
     QString tempInfo;
@@ -75,6 +88,15 @@ int MemberList::SearchMember(int idNum) const
     for (unsigned int i = 0; i < memberList.size(); i++)
     {
         if(memberList[i].GetId() == idNum) { return i;}
+    }
+    return -1;
+}
+
+int MemberList::SearchMember(string searchName) const
+{
+    for(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetName() == searchName) {return i;}
     }
     return -1;
 }

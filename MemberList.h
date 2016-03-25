@@ -46,10 +46,14 @@ public:
 
     //Should delete member by ID, return true if successful, false if member not in list
     bool DeleteMember(int idNum);
+    
+    bool DeleteMember(string searchName);
 
     //Should return pos. of member in list, or -1 if not in list
     int SearchMember(int idNum) const;
 
+    int SearchMember(string searchName) const;
+    
     //should return copy of member in list.
     /* THIS NEEDS ERROR HANDLING. Code will throw -1 if Member with GetID() == idNum is not in memberList. */
     Member GetMember(int idNum) const;
