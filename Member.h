@@ -55,7 +55,7 @@ public:
                    double newSpent);
 
     /* SetName - change name */
-    void SetName(int newName);
+    void SetName(QString newName);
 
     /* SetID - change idNum */
     void SetID(int newId);
