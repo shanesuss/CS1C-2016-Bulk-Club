@@ -22,13 +22,13 @@ bool MemberList::DeleteMember(int idNum)
     return false;
 }
 
-bool MemberList::DeleteMember(string searchName)
+bool MemberList::DeleteMember(QString searchName)
 {
-    forf(unsigned int i = 0; i < memberList.size(); i++)
+    for(unsigned int i = 0; i < memberList.size(); i++)
     {
         if(memberList[i].GetName() == searchName)
         {
-            memberList.erase(memberList.begin() + i)
+            memberList.erase(memberList.begin() + i);
             return true;
         }
     }
@@ -71,7 +71,7 @@ Member MemberList::GetMember(int idNum) const
        }
    }
    throw -1;
-}
+ }
 
 QString MemberList::GetMemberList() const
 {
@@ -92,11 +92,40 @@ int MemberList::SearchMember(int idNum) const
     return -1;
 }
 
-int MemberList::SearchMember(string searchName) const
+int MemberList::SearchMember(QString searchName) const
 {
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
         if(memberList[i].GetName() == searchName) {return i;}
     }
     return -1;
+}
+
+QString MemberList::GetRebateList()
+{
+    QString output = "";
+    for(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetMemberType() == "Executive")
+        {
+            Executive tempExec = static_cast<Executive&>(memberList[i]);
+            output += tempExec.GetRebate();
+            output += "\t" + tempExec.GetName() + "\n";
+        }
+    }
+    return output;
+}
+
+float MemberList::GetRebateAmount()
+{
+    float value = 0.;
+    for(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetMemberType() == "Executive")
+        {
+            Executive tempExec = static_cast<Executive&>(memberList[i]);
+            value += tempExec.GetRebate();
+        }
+    }
+    return value;
 }

@@ -47,12 +47,12 @@ public:
     //Should delete member by ID, return true if successful, false if member not in list
     bool DeleteMember(int idNum);
     
-    bool DeleteMember(string searchName);
+    bool DeleteMember(QString searchName);
 
     //Should return pos. of member in list, or -1 if not in list
     int SearchMember(int idNum) const;
 
-    int SearchMember(string searchName) const;
+    int SearchMember(QString searchName) const;
     
     //should return copy of member in list.
     /* THIS NEEDS ERROR HANDLING. Code will throw -1 if Member with GetID() == idNum is not in memberList. */
@@ -62,7 +62,8 @@ public:
 
     QString GetMemberOnlyList() const;
     QString GetExecutiveOnlyList() const;
-
+    QString GetRebateList();
+    float GetRebateAmount();
 private:
     vector<Member> memberList;
 

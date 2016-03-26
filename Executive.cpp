@@ -3,7 +3,7 @@
 Executive::Executive() :Member()
 {
     rebate = 0;
-    GetNewType() = "Executive";
+    SetMemberType("Executive");
 }
 
 Executive::Executive(QString newName,
@@ -13,7 +13,7 @@ Executive::Executive(QString newName,
                      :Member(newName,newNum,newDate,newSpent)
 {
     UpdateRebate();
-    GetNewType() = "Executive";
+    SetMemberType("Executive");
 }
 
 Executive::~Executive() {}
