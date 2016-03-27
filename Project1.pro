@@ -17,12 +17,22 @@ SOURCES += main.cpp\
     Date.cpp \
     Member.cpp \
     Executive.cpp \
-    MemberList.cpp
+    MemberList.cpp \
+    salesinventory.cpp
 
 HEADERS  += mainwindow.h \
     Date.h \
     Member.h \
     Executive.h \
-    MemberList.h
+    MemberList.h \
+    salesinventory.h
 
 FORMS    += mainwindow.ui
+
+DISTFILES += \
+    day1.txt \
+    day2.txt \
+    day3.txt \
+    day4.txt \
+    day5.txt \
+    SalesReport.txt

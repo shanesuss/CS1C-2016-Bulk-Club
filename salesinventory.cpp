@@ -4,10 +4,10 @@
 
 SalesInventory::SalesInventory()
 {
-    access.invItem = " ";
-    access.invPrice = 0.0;
-    access.invQuantity = 0;
-    invDate = Date::SetDate(0,0,0);
+    invItem = " ";
+    invPrice = 0.0;
+    invQuantity = 0;
+    invDate.SetDate(0,0,0);
     int invMemId = 0;
 
 }
@@ -15,7 +15,22 @@ SalesInventory::SalesInventory()
 SalesInventory::SalesInventory(Date date, int memId, QString item, float price, int quantity){
     invDate = date;
     invMemId = memId;
-    access.invItem = item;
-    access.invPrice = price;
-    access.invQuantity = quantity;
+    invItem = item;
+    invPrice = price;
+    invQuantity = quantity;
+}
+
+void SalesInventory::setItem(Date date,int memId, QString item, float price, int quantity)
+{
+    invDate = date;
+    invMemId = memId;
+    invItem = item;
+    invPrice = price;
+    invQuantity = quantity;
+
+}
+
+void SalesInventory::print()
+{
+    qDebug() << invItem;
 }

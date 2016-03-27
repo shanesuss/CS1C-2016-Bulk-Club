@@ -12,7 +12,8 @@
 #include <string>
 #include <QDebug>
 #include <fstream>
-
+#include <vector>
+#include "salesinventory.h"
 namespace Ui {
 class MainWindow;
 }
@@ -31,7 +32,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
+    QList<SalesInventory> inventoryList;
     QList<Executive> execMemList;
     QList<Member>   regMemList;
     
