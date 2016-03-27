@@ -1,31 +1,4 @@
-08/04/2015
-12345
-1 gallon milk
-6.09	3
-08/04/2015
-12345
-Assorted Muffins
-5.49	4
-08/04/2015
-77777
-Rack of Lamb
-14.39	4
-08/04/2015
-88888
-Foster Farms Whole Chicken
-10.35	1
-08/04/2015
-61616
-Spiderman 2
-19.55	1
-08/04/2015
-61616
-While You Were Sleeping
-17.35	1
-08/04/2015
-12345
-All Laundry Detergent
-7.59	108/06/2015
+08/06/2015
 77777
 Crest Toothpaste
 7.19	6
@@ -64,7 +37,7 @@ Roasted Garlic Bread
 08/06/2015
 61616
 Disney DVD Collection 2
-59.59	1 
+59.59	1
 08/06/2015
 12345
 Sprite
@@ -77,24 +50,3 @@ Coke
 12345
 Propel Fitness Water
 12.10	3
- 
-08/04/2015
-67899
-Bkfst Cereal Variety Pack
-6.89	4
-08/04/2015
-12345
-Disney DVD Collection 2
-59.59	1
-08/04/2015
-12899
-Pepsi
-6.35	8
-08/04/2015
-61616
-Coke
-6.39	7
-08/04/2015
-12345
-Assorted Muffins
-5.49	10

@@ -9,7 +9,6 @@
 
 #include <QString>
 #include <iomanip>
-#include <ostring>
 #include <iostream>
 #include <string>
 #include "Date.h"

@@ -6,6 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    MemberList accessMemList;
+
+    accessMemList.InitializeMemberList();
 }
 
 MainWindow::~MainWindow()
@@ -13,87 +17,83 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::InitializeMemberList()
+
+void MainWindow::InitializeItemList()
 {
-    QFile       shoppers(":/BulkClubMembers.txt");
-    QFile       inventory(":/SalesReport.txt");
-    QTextStream inFile(&inventory);
-    QTextStream infile(&shoppers);
-    QString     memName;
-    QString     memNum;
-    QString     memType;
-    QString     memExpDate;
-    int         newMonth;
-    int         newDay;
-    int         newYear;
-    int      memNumber;
-    Date        currDate(newMonth,newDay,newYear);
-    Member      newRegMem;
-    Executive   newExecMem;
-    bool        ok;
-    QString     item;
-    float       price;
-    int         quantity;
+    QFile itemsDay1(":/day1.txt");
+    QFile itemsDay2(":/day2.txt");
+    QFile itemsDay3(":/day3.txt");
+    QFile itemsDay4(":/day4.txt");
+    QFile itemsDay5(":/day5.txt");
+    QTextStream infile1(&itemsDay1);
+    QTextStream infile2(&itemsDay2);
+    QTextStream infile3(&itemsDay3);
+    QTextStream infile4(&itemsDay4);
+    QTextStream infile5(&itemsDay5);
+    Item newItem;
+    Item newItem2;
+    Item newItem3;
+    Item newItem4;
+    Item newItem5;
+    bool ok;
 
-    //open the text file to read from
-    shoppers.open(QIODevice::ReadOnly);
+    itemsDay1.open(QIODevice::ReadOnly);
+    itemsDay2.open(QIODevice::ReadOnly);
+    itemsDay3.open(QIODevice::ReadOnly);
+    itemsDay4.open(QIODevice::ReadOnly);
+    itemsDay5.open(QIODevice::ReadOnly);
 
-    //will keep reading until the end of the file is reached &
-    //will read line by line and store info as a QString which
-    //will then be used to convert to whatever data type is
-    //needed
-    while(!infile.atEnd())
+
+    while(!infile1.atEnd())
     {
-        memName = infile.readLine();
+        //reads through the first line
+        infile1.readLine();
+        infile2.readLine();
+        infile3.readLine();
+        infile4.readLine();
+        infile5.readLine();
 
-        memNum = infile.readLine();
-        memNumber = memNum.toInt();
+        //reads through the second line
+        infile1.readLine();
+        infile2.readLine();
+        infile3.readLine();
+        infile4.readLine();
+        infile5.readLine();
 
-        memType = infile.readLine();
+        newItem.name = infile1.readLine();
+        newItem2.name= infile2.readLine();
+        newItem3.name= infile3.readLine();
+        newItem4.name= infile4.readLine();
+        newItem5.name= infile5.readLine();
 
-        memExpDate = infile.readLine();
+        QStringList strList1 = infile1.readLine().split("    ");
+        QStringList strList2 = infile2.readLine().split("    ");
+        QStringList strList3 = infile3.readLine().split("    ");
+        QStringList strList4 = infile4.readLine().split("    ");
+        QStringList strList5 = infile5.readLine().split("    ");
 
-        //splits the date into month, day and year
-        QStringList dateStr = memExpDate.split("/");
 
-        dateStr.at(0).toInt(&ok, 10);
-        dateStr.at(1).toInt(&ok, 10);
-        dateStr.at(2).toInt(&ok, 10);
 
-        Date newDate(dateStr.at(0).toInt(&ok, 10),
-                     dateStr.at(1).toInt(&ok, 10),
-                     dateStr.at(2).toInt(&ok, 10));
 
-        //set info for specific member
-         newRegMem = Member(memName,memNumber,newDate,0.0);
 
-         if(memType == "Executive")
-         {
-             newExecMem.SetMember(memName,memNumber,newDate,0.0);
-         }
-         else if(memType == "Regular")
-         {
-             newRegMem.SetMember(memName,memNumber,newDate,0.0);
-         }
 
-         //add member to list
-         regMemList.append(newRegMem);
-         execMemList.append(newExecMem);        
-    }
 
-    inventory.open(QIODevice::ReadOnly);
-    while(!inFile.atEnd()){
 
-        memExpDate = infile.readLine();
-        QStringList dateStr = memExpDate.split("/");
 
-        dateStr.at(0).toInt(&ok, 10);
-        dateStr.at(1).toInt(&ok, 10);
-        dateStr.at(2).toInt(&ok, 10);
 
-          Date newDate(dateStr.at(0).toInt(&ok, 10),
-                     dateStr.at(1).toInt(&ok, 10),
-                     dateStr.at(2).toInt(&ok, 10));
+
+
+
+
+
+
 
     }
+}
+
+void MainWindow::on_pushButton_11_clicked()
+{
+    membership = new ExecReg(this);
+
+    membership->show();
 }
