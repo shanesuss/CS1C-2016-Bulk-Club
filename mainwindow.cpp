@@ -26,10 +26,11 @@ void MainWindow::InitializeMemberList()
     int         newMonth;
     int         newDay;
     int         newYear;
-    int      memNumber;
+    int         memNumber;
     Date        currDate(newMonth,newDay,newYear);
     Member      newRegMem;
     Executive   newExecMem;
+    SalesInventory newInv;
     bool        ok;
     QString     item;
     float       price;
@@ -81,6 +82,10 @@ void MainWindow::InitializeMemberList()
          execMemList.append(newExecMem);        
     }
 
+//    08/01/2015
+//    12345
+//    1 gallon milk
+//    6.09	88
     inventory.open(QIODevice::ReadOnly);
     while(!inFile.atEnd()){
 
@@ -95,5 +100,14 @@ void MainWindow::InitializeMemberList()
                      dateStr.at(1).toInt(&ok, 10),
                      dateStr.at(2).toInt(&ok, 10));
 
+          memNum = infile.readLine();
+          memNumber = memNum.toInt();
+          item  = infile.readLine();
+          QString stuff = inFile.readLine();
+          QStringList split = stuff.split("\s");
+          price = split.at(0).toFloat(&ok, 10);
+          quantity = split.at(1).toInt(&ok, 10);
+          newInv.setItem(newDate, memNumber, item, price, quantity);
+          inventoryList.append(newInv);
     }
 }
