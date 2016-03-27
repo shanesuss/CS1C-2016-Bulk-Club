@@ -6,8 +6,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    InitializeMemberList();
 }
 
 MainWindow::~MainWindow()
@@ -25,21 +23,17 @@ void MainWindow::InitializeMemberList()
     QString     memNum;
     QString     memType;
     QString     memExpDate;
-    QString     qPrice;
-    QString     qQuantity;
     int         newMonth;
     int         newDay;
     int         newYear;
-    int         memNumber;
+    int      memNumber;
     Date        currDate(newMonth,newDay,newYear);
     Member      newRegMem;
     Executive   newExecMem;
-    SalesInventory report;
     bool        ok;
     QString     item;
     float       price;
     int         quantity;
-
 
     //open the text file to read from
     shoppers.open(QIODevice::ReadOnly);
@@ -87,13 +81,9 @@ void MainWindow::InitializeMemberList()
          execMemList.append(newExecMem);        
     }
 
-//    08/02/2015
-//    61616
-//    One gallon milk
-//    6.09	5
     inventory.open(QIODevice::ReadOnly);
     while(!inFile.atEnd()){
-        
+
         memExpDate = infile.readLine();
         QStringList dateStr = memExpDate.split("/");
 
@@ -105,18 +95,5 @@ void MainWindow::InitializeMemberList()
                      dateStr.at(1).toInt(&ok, 10),
                      dateStr.at(2).toInt(&ok, 10));
 
-        memNum    = inFile.readLine();
-        memNumber = memNum.toInt();
-        item      = inFile.readLine();
-        qPrice    = inFile.readLine();
-        price     = qPrice.toFloat();
-        qQuantity = inFile.readLine();
-        quantity  = qQuantity.toInt();
-        report.setItem(newDate, memNumber, item, price, quantity);
-        inventoryList.append(report);
-    }
-    for(int i =0; i < inventoryList.size(); i++)
-    {
-            inventoryList[i].print();
     }
 }
