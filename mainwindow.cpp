@@ -35,7 +35,6 @@ void MainWindow::InitializeItemList()
     Item newItem3;
     Item newItem4;
     Item newItem5;
-    bool ok;
 
     itemsDay1.open(QIODevice::ReadOnly);
     itemsDay2.open(QIODevice::ReadOnly);

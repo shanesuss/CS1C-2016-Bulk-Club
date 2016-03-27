@@ -51,8 +51,13 @@ int Member::GetId() const
 QString Member::GetMemberInfo() const
 {
 
-
-    return "| " + name + " | " + idNum + " | " + totalSpent;
+        ostringstream output;
+       output  << fixed << left << "| " << setw(16) << name.toStdString()
+                   << " | "  << setw(5) << idNum << " | "
+                   << setw(12) << memberType.toStdString() << " | "
+                   << setw(12) << expDate.DisplayDate() << " | "
+                   <<  "$" << setprecision(2) << fixed << setw(8) << totalSpent << " |";
+       return QString::fromStdString(output.str());
 }
 
 QString Member::GetMemberType() const

@@ -73,6 +73,9 @@ public:
 
     QString GetExecutiveOnlyList() const;
 
+        QString GetRebateList();
+        float GetRebateAmount();
+
 private:
     vector<Member> memberList;
 

@@ -168,11 +168,39 @@ int MemberList::SearchMember(int idNum) const
 
 int MemberList::SearchMember(QString searchName) const
 {
-    int memberSrch;
-
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
         if(memberList[i].GetName() == searchName) {return i;}
     }
     return -1;
+}
+
+
+QString MemberList::GetRebateList()
+{
+    QString output = "";
+    for(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetMemberType() == "Executive")
+        {
+            Executive tempExec = static_cast<Executive&>(memberList[i]);
+            output += tempExec.GetRebate();
+           output += "\t" + tempExec.GetName() + "\n";
+        }
+    }
+    return output;
+}
+
+float MemberList::GetRebateAmount()
+{
+    float value = 0.;
+    for(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetMemberType() == "Executive")
+        {
+            Executive tempExec = static_cast<Executive&>(memberList[i]);
+            value += tempExec.GetRebate();
+        }
+    }
+    return value;
 }
