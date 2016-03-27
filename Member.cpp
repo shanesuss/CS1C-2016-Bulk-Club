@@ -55,7 +55,7 @@ QString Member::GetMemberInfo() const
                 << " | "  << setw(5) << idNum << " | "
                 << setw(12) << memberType.toStdString() << " | "
                 << setw(12) << expDate.DisplayDate() << " | "
-                <<  "$" << setprecision(2) << fixed << setw(8) << totalSpent << " |" << endl;
+                <<  "$" << setprecision(2) << fixed << setw(8) << totalSpent << " |";
     return QString::fromStdString(output.str());
 
 }
