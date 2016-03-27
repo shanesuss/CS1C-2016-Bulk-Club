@@ -1,71 +1,7 @@
 #include "MemberList.h"
 
-MemberList::MemberList() {}
-
-MemberList::~MemberList() {}
-
-void MemberList::InitializeMemberList()
+MemberList::MemberList()
 {
-    QFile       shoppers(":/BulkClubMembers.txt");
-    QTextStream infile(&shoppers);
-    QString     memName;
-    QString     memNum;
-    QString     memType;
-    QString     memExpDate;
-    int         newMonth;
-    int         newDay;
-    int         newYear;
-    int         memNumber;
-    Date        currDate(newMonth,newDay,newYear);
-    Member      newMem;
-    Executive   newExec;
-    bool        ok;
-
-    //open the text file to read from
-    shoppers.open(QIODevice::ReadOnly);
-
-    //will keep reading until the end of the file is reached &
-    //will read line by line and store info as a QString which
-    //will then be used to convert to whatever data type is
-    //needed
-    while(!infile.atEnd())
-    {
-        memName = infile.readLine();
-
-        memNum = infile.readLine();
-        memNumber = memNum.toInt();
-
-        memType = infile.readLine();
-
-        memExpDate = infile.readLine();
-
-        //splits the date into month, day and year
-        QStringList dateStr = memExpDate.split("/");
-
-        dateStr.at(0).toInt(&ok, 10);
-        dateStr.at(1).toInt(&ok, 10);
-        dateStr.at(2).toInt(&ok, 10);
-
-        Date newDate(dateStr.at(0).toInt(&ok, 10),
-                     dateStr.at(1).toInt(&ok, 10),
-                     dateStr.at(2).toInt(&ok, 10));
-
-        //set info for specific member
-         if(memType == "Executive")
-         {
-             newExec.SetMember(memName,memNumber,newDate,0);
-
-             memberList.push_back(newExec);
-         }
-         else if(memType == "Regular")
-         {
-             newMem.SetMember(memName,memNumber,newDate,0);
-
-             memberList.push_back(newMem);
-         }
-    }
-
-    shoppers.close();
 }
 
 void MemberList::AddMember(Member newMember)
@@ -88,27 +24,20 @@ bool MemberList::DeleteMember(int idNum)
 
 bool MemberList::DeleteMember(QString searchName)
 {
-    bool remove;
-
-    remove = false;
-
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
         if(memberList[i].GetName() == searchName)
         {
             memberList.erase(memberList.begin() + i);
-
-            remove = true;
+            return true;
         }
     }
-
-    return remove;
+    return false;
 }
 
 QString MemberList::GetExecutiveOnlyList() const
 {
     QString tempInfo;
-
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
         if(memberList[i].GetMemberType() == "Executive")
@@ -122,7 +51,6 @@ QString MemberList::GetExecutiveOnlyList() const
 QString MemberList::GetMemberOnlyList() const
 {
     QString tempInfo;
-
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
         if(memberList[i].GetMemberType() == "Member")
@@ -130,7 +58,6 @@ QString MemberList::GetMemberOnlyList() const
             tempInfo = memberList[i].GetMemberInfo();
         }
     }
-
     return tempInfo;
 }
 
@@ -144,12 +71,11 @@ Member MemberList::GetMember(int idNum) const
        }
    }
    throw -1;
-}
+ }
 
 QString MemberList::GetMemberList() const
 {
     QString tempInfo;
-
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
         tempInfo += memberList[i].GetMemberInfo();
@@ -168,11 +94,38 @@ int MemberList::SearchMember(int idNum) const
 
 int MemberList::SearchMember(QString searchName) const
 {
-    int memberSrch;
-
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
         if(memberList[i].GetName() == searchName) {return i;}
     }
     return -1;
+}
+
+QString MemberList::GetRebateList()
+{
+    QString output = "";
+    for(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetMemberType() == "Executive")
+        {
+            Executive tempExec = static_cast<Executive&>(memberList[i]);
+            output += tempExec.GetRebate();
+            output += "\t" + tempExec.GetName() + "\n";
+        }
+    }
+    return output;
+}
+
+float MemberList::GetRebateAmount()
+{
+    float value = 0.;
+    for(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetMemberType() == "Executive")
+        {
+            Executive tempExec = static_cast<Executive&>(memberList[i]);
+            value += tempExec.GetRebate();
+        }
+    }
+    return value;
 }

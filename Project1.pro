@@ -18,28 +18,21 @@ SOURCES += main.cpp\
     Member.cpp \
     Executive.cpp \
     MemberList.cpp \
-    execreg.cpp \
-    newregular.cpp \
-    newexecutive.cpp
+    salesinventory.cpp
 
 HEADERS  += mainwindow.h \
     Date.h \
     Member.h \
     Executive.h \
     MemberList.h \
-    execreg.h \
-    newregular.h \
-    newexecutive.h
+    salesinventory.h
 
-FORMS    += mainwindow.ui \
-    execreg.ui \
-    newregular.ui \
-    newexecutive.ui
+FORMS    += mainwindow.ui
 
 DISTFILES += \
-    BulkClubMembers.txt \
     day1.txt \
     day2.txt \
     day3.txt \
     day4.txt \
-    day5.txt
+    day5.txt \
+    SalesReport.txt

@@ -29,26 +29,17 @@
  *
  */
 
+
+
 #include "Executive.h"
-#include "Member.h"
-#include "mainwindow.h"
-#include <QApplication>
-#include <iostream>
-#include <iomanip>
 #include <vector>
 #include <QString>
-#include <QFile>
-#include <QTextStream>
-
-using namespace std;
 
 class MemberList
 {
 public:
     MemberList();
     ~MemberList();
-
-    void InitializeMemberList();
 
     //Should add member to bottom of list
     void AddMember(Member newMember);
@@ -70,9 +61,9 @@ public:
     QString GetMemberList() const;
 
     QString GetMemberOnlyList() const;
-
     QString GetExecutiveOnlyList() const;
-
+    QString GetRebateList();
+    float GetRebateAmount();
 private:
     vector<Member> memberList;
 
