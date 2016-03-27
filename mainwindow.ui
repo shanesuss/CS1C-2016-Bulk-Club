@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>421</width>
+    <width>543</width>
     <height>620</height>
    </rect>
   </property>
@@ -30,7 +30,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
@@ -159,10 +159,10 @@
      <widget class="QWidget" name="layoutWidget_8">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>40</y>
-        <width>64</width>
-        <height>125</height>
+        <x>290</x>
+        <y>10</y>
+        <width>231</width>
+        <height>241</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -183,14 +183,14 @@
        <item>
         <widget class="QPushButton" name="pushButton_13">
          <property name="text">
-          <string>qqqqq</string>
+          <string>Add Item</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_14">
          <property name="text">
-          <string>aaa</string>
+          <string>Delete Item</string>
          </property>
         </widget>
        </item>
@@ -204,8 +204,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>421</width>
-     <height>24</height>
+     <width>543</width>
+     <height>20</height>
     </rect>
    </property>
   </widget>

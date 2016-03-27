@@ -27,7 +27,6 @@ void NewExecutive::on_pushButton_clicked()
     int     day;
     int     year;
     double  totalSpent;
-    float   rebateAmt;
     bool    ok;
     Executive newExecMem;
     MemberList myList;
@@ -59,5 +58,4 @@ void NewExecutive::on_pushButton_clicked()
     newExecMem = Executive(newName,id,newExpDate,totalSpent);
 
     myList.AddMember(newExecMem);
-
 }

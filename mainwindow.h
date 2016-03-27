@@ -5,6 +5,7 @@
 #include "Member.h"
 #include "Executive.h"
 #include "Date.h"
+#include "MemberList.h"
 #include <QApplication>
 #include <iostream>
 #include <QTextStream>
@@ -13,10 +14,20 @@
 #include <QDebug>
 #include <fstream>
 #include <vector>
-#include "salesinventory.h"
+#include "execreg.h"
+
+struct Item
+{
+    QString name;
+    float   cost;
+    unsigned short totQuant;
+};
+
 namespace Ui {
 class MainWindow;
 }
+
+class ExecReg;
 
 class MainWindow : public QMainWindow
 {
@@ -26,17 +37,18 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-
 private slots:
 
+    void on_pushButton_11_clicked();
 
 private:
     Ui::MainWindow *ui;
-    QList<SalesInventory> inventoryList;
-    QList<Executive> execMemList;
-    QList<Member>   regMemList;
-    
-    void InitializeMemberList();
+
+    ExecReg *membership;
+
+    vector<Item> inventory;
+
+    void InitializeItemList();
 };
 
 #endif // MAINWINDOW_H

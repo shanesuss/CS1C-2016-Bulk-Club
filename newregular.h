@@ -16,6 +16,9 @@ public:
     explicit NewRegular(QWidget *parent = 0);
     ~NewRegular();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::NewRegular *ui;
 };
