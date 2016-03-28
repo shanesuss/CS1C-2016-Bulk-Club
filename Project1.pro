@@ -16,11 +16,44 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     Date.cpp \
     Member.cpp \
-    Executive.cpp
+    Executive.cpp \
+    MemberList.cpp \
+    execreg.cpp \
+    newregular.cpp \
+    newexecutive.cpp \
+    dailysales.cpp \
+    memreport.cpp \
+    deletemember.cpp \
+    additem.cpp \
+    salesinventory.cpp \
+    deleteitem.cpp
 
 HEADERS  += mainwindow.h \
     Date.h \
     Member.h \
-    Executive.h
+    Executive.h \
+    MemberList.h \
+    execreg.h \
+    newregular.h \
+    newexecutive.h \
+    dailysales.h \
+    memreport.h \
+    deletemember.h \
+    additem.h \
+    salesinventory.h \
+    deleteitem.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    execreg.ui \
+    newregular.ui \
+    newexecutive.ui \
+    dailysales.ui \
+    memreport.ui \
+    deletemember.ui \
+    additem.ui \
+    deleteitem.ui
+
+DISTFILES +=
+
+RESOURCES += \
+    bulkclub.qrc
