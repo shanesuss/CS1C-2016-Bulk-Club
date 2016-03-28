@@ -30,6 +30,7 @@ void NewExecutive::on_pushButton_clicked()
     bool    ok;
     Executive newExecMem;
     MemberList myList;
+    vector<Member> currList;
 
     newName = ui->lineEdit->text();
 
@@ -57,5 +58,5 @@ void NewExecutive::on_pushButton_clicked()
 
     newExecMem = Executive(newName,id,newExpDate,totalSpent);
 
-    myList.AddMember(newExecMem);
+
 }

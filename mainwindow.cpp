@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     MemberList accessMemList;
 
     accessMemList.InitializeMemberList();
+    ui->textBrowser_5->setText(accessMemList.GetMemberList());
 }
 
 MainWindow::~MainWindow()

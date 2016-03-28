@@ -37,9 +37,11 @@ FORMS    += mainwindow.ui \
     newexecutive.ui
 
 DISTFILES += \
-    BulkClubMembers.txt \
     day1.txt \
     day2.txt \
     day3.txt \
     day4.txt \
     day5.txt
+
+RESOURCES += \
+    ../../../Documents/BulkClubAlpha/warehouseshoppers.qrc

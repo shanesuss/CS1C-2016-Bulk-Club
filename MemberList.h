@@ -73,6 +73,8 @@ public:
 
     QString GetExecutiveOnlyList() const;
 
+    Member GetVector(vector<Member> &list) const;
+
 private:
     vector<Member> memberList;
 
