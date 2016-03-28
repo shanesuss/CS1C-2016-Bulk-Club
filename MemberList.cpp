@@ -146,6 +146,11 @@ Member MemberList::GetMember(int idNum) const
    throw -1;
 }
 
+void MemberList::GetVector(vector<Member> &list) const
+{
+    list = memberList;
+}
+
 QString MemberList::GetMemberList() const
 {
     QString tempInfo;

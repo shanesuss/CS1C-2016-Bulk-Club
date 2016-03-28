@@ -45,3 +45,8 @@ void MainWindow::on_pushButton_12_clicked()
 
     delMemUi->show();
 }
+
+void MainWindow::on_pushButton_15_clicked()
+{
+    
+}

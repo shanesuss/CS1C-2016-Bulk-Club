@@ -58,5 +58,7 @@ void NewExecutive::on_pushButton_clicked()
 
     newExecMem = Executive(newName,id,newExpDate,totalSpent);
 
+    myList.AddMember(newExecMem);
 
+    this->hide();
 }

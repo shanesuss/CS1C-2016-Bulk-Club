@@ -20,7 +20,11 @@ SOURCES += main.cpp\
     MemberList.cpp \
     execreg.cpp \
     newregular.cpp \
-    newexecutive.cpp
+    newexecutive.cpp \
+    dailysales.cpp \
+    memreport.cpp \
+    deletemember.cpp \
+    additem.cpp
 
 HEADERS  += mainwindow.h \
     Date.h \
@@ -29,19 +33,22 @@ HEADERS  += mainwindow.h \
     MemberList.h \
     execreg.h \
     newregular.h \
-    newexecutive.h
+    newexecutive.h \
+    dailysales.h \
+    memreport.h \
+    deletemember.h \
+    additem.h
 
 FORMS    += mainwindow.ui \
     execreg.ui \
     newregular.ui \
-    newexecutive.ui
+    newexecutive.ui \
+    dailysales.ui \
+    memreport.ui \
+    deletemember.ui \
+    additem.ui
 
-DISTFILES += \
-    day1.txt \
-    day2.txt \
-    day3.txt \
-    day4.txt \
-    day5.txt
+DISTFILES +=
 
 RESOURCES += \
     ../../../Documents/BulkClubAlpha/warehouseshoppers.qrc

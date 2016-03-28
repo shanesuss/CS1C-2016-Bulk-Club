@@ -39,6 +39,7 @@
 #include <QString>
 #include <QFile>
 #include <QTextStream>
+#include <algorithm>
 
 using namespace std;
 
@@ -73,7 +74,8 @@ public:
 
     QString GetExecutiveOnlyList() const;
 
-    Member GetVector(vector<Member> &list) const;
+    void GetVector(vector<Member> &list) const;
+
 
 private:
     vector<Member> memberList;
