@@ -17,38 +17,12 @@ SOURCES += main.cpp\
     Date.cpp \
     Member.cpp \
     Executive.cpp \
-    MemberList.cpp \
-    execreg.cpp \
-    newregular.cpp \
-    newexecutive.cpp \
-    dailysales.cpp \
-    memreport.cpp \
-    deletemember.cpp \
-    additem.cpp
+    MemberList.cpp
 
 HEADERS  += mainwindow.h \
     Date.h \
     Member.h \
     Executive.h \
-    MemberList.h \
-    execreg.h \
-    newregular.h \
-    newexecutive.h \
-    dailysales.h \
-    memreport.h \
-    deletemember.h \
-    additem.h
+    MemberList.h
 
-FORMS    += mainwindow.ui \
-    execreg.ui \
-    newregular.ui \
-    newexecutive.ui \
-    dailysales.ui \
-    memreport.ui \
-    deletemember.ui \
-    additem.ui
-
-DISTFILES +=
-
-RESOURCES += \
-    ../../../Documents/BulkClubAlpha/warehouseshoppers.qrc
+FORMS    += mainwindow.ui
