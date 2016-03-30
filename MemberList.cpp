@@ -12,9 +12,9 @@ void MemberList::InitializeMemberList()
     QString     memNum;
     QString     memType;
     QString     memExpDate;
-    int         newMonth;
-    int         newDay;
-    int         newYear;
+    int         newMonth = 0;
+    int         newDay = 0;
+    int         newYear = 0;
     int         memNumber;
     Date        currDate(newMonth,newDay,newYear);
     Member      newMem;
@@ -173,7 +173,6 @@ int MemberList::SearchMember(int idNum) const
 
 int MemberList::SearchMember(QString searchName) const
 {
-    int memberSrch;
 
     for(unsigned int i = 0; i < memberList.size(); i++)
     {

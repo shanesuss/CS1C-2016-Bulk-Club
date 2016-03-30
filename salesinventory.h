@@ -1,6 +1,6 @@
 #ifndef SALESINVENTORY_H
 #define SALESINVENTORY_H
-#include <Qstring>
+#include <QString>
 #include"Date.h"
 
 class SalesInventory
