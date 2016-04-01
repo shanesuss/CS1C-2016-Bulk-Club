@@ -18,7 +18,7 @@ class ExecReg : public QDialog
     Q_OBJECT
 
 public:
-    explicit ExecReg(QWidget *parent = 0);
+    explicit ExecReg(QWidget *parent = 0, MemberList myMemberList);
     ~ExecReg();
 
 private slots:

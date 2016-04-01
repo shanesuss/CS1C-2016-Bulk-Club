@@ -1,12 +1,14 @@
 #include "newregular.h"
 #include "ui_newregular.h"
-
+#include "mainwindow.h"
+#include <QDebug>
 NewRegular::NewRegular(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewRegular)
 {
     ui->setupUi(this);
 }
+
 
 NewRegular::~NewRegular()
 {
@@ -28,9 +30,8 @@ void NewRegular::on_pushButton_clicked()
     int     year;
     double  totalSpent;
     bool    ok;
-    Executive newExecMem;
-    MemberList myList;
-
+    Member newRegMem;
+    qDebug () << "Test";
     newName = ui->lineEdit->text();
 
     newId = ui->lineEdit_2->text();
@@ -55,9 +56,5 @@ void NewRegular::on_pushButton_clicked()
 
     totalSpent = newTotal.toDouble();
 
-    newExecMem = Executive(newName,id,newExpDate,totalSpent);
-
-    myList.AddMember(newExecMem);
-
-    this->hide();
+    MainWindow::access
 }

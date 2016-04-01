@@ -1,11 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    accessMemList.InitializeMemberList();
+    ui->textBrowser_7->setText(accessMemList.GetMemberOnlyList());
+    ui->textBrowser_8->setText(accessMemList.GetExecutiveOnlyList());
 }
 
 MainWindow::~MainWindow()
@@ -13,66 +18,46 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::InitializeMemberList()
+void MainWindow::on_pushButton_11_clicked()
 {
-    QFile       shoppers(":/BulkClubMembers.txt");
-    QTextStream infile(&shoppers);
-    QString     memName;
-    QString     memNum;
-    QString     memType;
-    QString     memExpDate;
-    int         newMonth;
-    int         newDay;
-    int         newYear;
-    int      memNumber;
-    Date        currDate(newMonth,newDay,newYear);
-    Member      newRegMem;
-    Executive   newExecMem;
-    bool        ok;
+    membership = new ExecReg(this, )
+    membership->show();
+    /*The following code is unimplemented as AddMember is not finished:
+     *
+     * ui->textBrowser_7->setText(accessMemList.GetMemberOnlyList());
+     */
+}
 
-    //open the text file to read from
-    shoppers.open(QIODevice::ReadOnly);
+void MainWindow::on_pushButton_8_clicked()
+{
+    reportUi = new DailySales(this);
+    reportUi->show();
+}
 
-    //will keep reading until the end of the file is reached &
-    //will read line by line and store info as a QString which
-    //will then be used to convert to whatever data type is
-    //needed
-    while(!infile.atEnd())
-    {
-        memName = infile.readLine();
+void MainWindow::on_pushButton_9_clicked()
+{
+    memReportUi = new MemReport(this);
 
-        memNum = infile.readLine();
-        memNumber = memNum.toInt();
+    memReportUi->show();
+}
 
-        memType = infile.readLine();
+void MainWindow::on_pushButton_12_clicked()
+{
+    delMemUi = new DeleteMember(this);
 
-        memExpDate = infile.readLine();
+    delMemUi->show();
+}
 
-        //splits the date into month, day and year
-        QStringList dateStr = memExpDate.split("/");
 
-        dateStr.at(0).toInt(&ok, 10);
-        dateStr.at(1).toInt(&ok, 10);
-        dateStr.at(2).toInt(&ok, 10);
+void MainWindow::on_pushButton_16_clicked()
+{
+    delItemUi = new DeleteItem(this);
 
-        Date newDate(dateStr.at(0).toInt(&ok, 10),
-                     dateStr.at(1).toInt(&ok, 10),
-                     dateStr.at(2).toInt(&ok, 10));
+    delItemUi->show();
+}
 
-        //set info for specific member
-         newRegMem = Member(memName,memNumber,newDate,0.0);
-
-         if(memType == "Executive")
-         {
-             newExecMem.SetMember(memName,memNumber,newDate,0.0);
-         }
-         else if(memType == "Regular")
-         {
-             newRegMem.SetMember(memName,memNumber,newDate,0.0);
-         }
-
-         //add member to list
-         regMemList.append(newRegMem);
-         execMemList.append(newExecMem);        
-    }
+void MainWindow::on_pushButton_15_clicked()
+{
+    addItemUi = new AddItem(this);
+    addItemUi->show();
 }

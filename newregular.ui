@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>803</width>
-    <height>485</height>
+    <width>677</width>
+    <height>425</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Enter Experiation month:</string>
+    <string>Enter Expiration month:</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_2">
@@ -45,7 +45,7 @@
      <x>330</x>
      <y>70</y>
      <width>321</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>
@@ -55,7 +55,7 @@
      <x>330</x>
      <y>150</y>
      <width>321</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>
@@ -78,7 +78,7 @@
      <x>330</x>
      <y>230</y>
      <width>321</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>
@@ -88,7 +88,7 @@
      <x>330</x>
      <y>30</y>
      <width>321</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>
@@ -98,7 +98,7 @@
      <x>330</x>
      <y>190</y>
      <width>321</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>
@@ -134,7 +134,7 @@
      <x>330</x>
      <y>110</y>
      <width>321</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>

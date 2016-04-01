@@ -1,5 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>day1.txt</file>
+        <file>../../day5.txt</file>
+        <file>../../day4.txt</file>
+        <file>../../day3.txt</file>
+        <file>../../day2.txt</file>
+        <file>../../day1.txt</file>
+        <file>../../BulkClubMembers.txt</file>
     </qresource>
 </RCC>
