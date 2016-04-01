@@ -56,5 +56,4 @@ void NewRegular::on_pushButton_clicked()
 
     totalSpent = newTotal.toDouble();
 
-    MainWindow::access
 }

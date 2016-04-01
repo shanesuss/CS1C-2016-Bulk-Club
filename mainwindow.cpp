@@ -20,7 +20,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_11_clicked()
 {
-    membership = new ExecReg(this, )
+    membership = new ExecReg(this);
     membership->show();
     /*The following code is unimplemented as AddMember is not finished:
      *

@@ -1,14 +1,13 @@
 #include "execreg.h"
 #include "ui_execreg.h"
 
-ExecReg::ExecReg(QWidget *parent; MemberList myMemberList) :
+
+ExecReg::ExecReg(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ExecReg)
 {
     ui->setupUi(this);
 }
-
-
 
 ExecReg::~ExecReg()
 {
