@@ -203,7 +203,7 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>630</x>
         <y>0</y>
-        <width>91</width>
+        <width>132</width>
         <height>241</height>
        </rect>
       </property>
@@ -219,6 +219,13 @@ p, li { white-space: pre-wrap; }
         <widget class="QPushButton" name="pushButton_12">
          <property name="text">
           <string>Delete</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>Update</string>
          </property>
         </widget>
        </item>

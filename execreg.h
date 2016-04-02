@@ -19,6 +19,7 @@ class ExecReg : public QDialog
 
 public:
     explicit ExecReg(QWidget *parent = 0);
+    Member GetMember();
     ~ExecReg();
 
 private slots:
@@ -28,7 +29,7 @@ private slots:
 
 private:
     Ui::ExecReg *ui;
-
+    Member newMember;
     NewRegular *regularWindow;
 
     NewExecutive *execWindow;

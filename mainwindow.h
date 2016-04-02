@@ -27,7 +27,6 @@ struct Item
     float   cost;
     unsigned short totQuant;
 };
-
 namespace Ui {
 class MainWindow;
 }
@@ -40,6 +39,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    //MemberList accessMemList;
     ~MainWindow();
 
 private slots:
@@ -56,16 +56,18 @@ private slots:
 
     void on_pushButton_15_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     ExecReg *membership;
 
-    MemberList accessMemList;
     DailySales *reportUi;
 
     MemReport *memReportUi;
 
+    MemberList accessMemList;
     DeleteMember *delMemUi;
 
     AddItem *addItemUi;

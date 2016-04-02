@@ -14,6 +14,7 @@ class NewExecutive : public QDialog
 
 public:
     explicit NewExecutive(QWidget *parent = 0);
+    Executive GetExec();
     ~NewExecutive();
 
 private slots:
@@ -21,6 +22,7 @@ private slots:
 
 private:
     Ui::NewExecutive *ui;
+    Executive newExecMem;
 };
 
 #endif // NEWEXECUTIVE_H

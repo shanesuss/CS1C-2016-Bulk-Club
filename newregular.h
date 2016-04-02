@@ -14,6 +14,7 @@ class NewRegular : public QDialog
 
 public:
     explicit NewRegular(QWidget *parent = 0);
+    Member GetMember();
     ~NewRegular();
 
 private slots:
@@ -21,6 +22,7 @@ private slots:
 
 private:
     Ui::NewRegular *ui;
+    Member newMember;
 };
 
 #endif // NEWREGULAR_H

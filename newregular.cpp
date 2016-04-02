@@ -30,7 +30,6 @@ void NewRegular::on_pushButton_clicked()
     int     year;
     double  totalSpent;
     bool    ok;
-    Member newRegMem;
     qDebug () << "Test";
     newName = ui->lineEdit->text();
 
@@ -56,4 +55,11 @@ void NewRegular::on_pushButton_clicked()
 
     totalSpent = newTotal.toDouble();
 
+    newMember = Member(newName,id,newExpDate,totalSpent);
+
+}
+
+Member NewRegular::GetMember()
+{
+    return newMember;
 }

@@ -17,13 +17,18 @@ ExecReg::~ExecReg()
 void ExecReg::on_pushButton_clicked()
 {
     regularWindow = new NewRegular(this);
-
     regularWindow->show();
+    newMember = regularWindow->GetMember();
 }
 
 void ExecReg::on_pushButton_2_clicked()
 {
     execWindow = new NewExecutive(this);
-
     execWindow->show();
+    newMember = execWindow->GetExec();
+}
+
+Member ExecReg::GetMember()
+{
+    return newMember;
 }

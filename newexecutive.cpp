@@ -28,7 +28,6 @@ void NewExecutive::on_pushButton_clicked()
     int     year;
     double  totalSpent;
     bool    ok;
-    Executive newExecMem;
     MemberList myList;
     vector<Member> currList;
 
@@ -58,7 +57,9 @@ void NewExecutive::on_pushButton_clicked()
 
     newExecMem = Executive(newName,id,newExpDate,totalSpent);
 
-    myList.AddMember(newExecMem);
-
     this->hide();
+}
+Executive NewExecutive::GetExec()
+{
+    return newExecMem;
 }

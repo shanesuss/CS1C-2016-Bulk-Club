@@ -7,7 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     accessMemList.InitializeMemberList();
     ui->textBrowser_7->setText(accessMemList.GetMemberOnlyList());
     ui->textBrowser_8->setText(accessMemList.GetExecutiveOnlyList());
@@ -26,7 +25,9 @@ void MainWindow::on_pushButton_11_clicked()
      *
      * ui->textBrowser_7->setText(accessMemList.GetMemberOnlyList());
      */
+    accessMemList.AddMember(membership->GetMember());
 }
+
 
 void MainWindow::on_pushButton_8_clicked()
 {
@@ -60,4 +61,9 @@ void MainWindow::on_pushButton_15_clicked()
 {
     addItemUi = new AddItem(this);
     addItemUi->show();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->textBrowser_7->setText(accessMemList.GetMemberList());
 }
