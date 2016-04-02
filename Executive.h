@@ -23,7 +23,7 @@ public:
                    double   newSpent);
 
     void SetTotalSpent(float newSpent);
-                   
+
     QString GetName() const;
 
     int GetId() const;

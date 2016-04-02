@@ -11,6 +11,7 @@
 #include "deletemember.h"
 #include "deleteitem.h"
 #include "additem.h"
+#include "SalesList.h"
 #include <QApplication>
 #include <iostream>
 #include <QTextStream>
@@ -21,12 +22,6 @@
 #include <vector>
 #include "execreg.h"
 
-struct Item
-{
-    QString name;
-    float   cost;
-    unsigned short totQuant;
-};
 
 namespace Ui {
 class MainWindow;
@@ -70,8 +65,6 @@ private:
     AddItem *addItemUi;
 
     DeleteItem *delItemUi;
-
-    vector<Item> inventory;
 
     void InitializeItemList();
 };

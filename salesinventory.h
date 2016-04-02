@@ -9,7 +9,13 @@ public:
     SalesInventory();
     SalesInventory(Date mydate, int id, QString item, float price, int quantity);
 
-    void setdItem(Date mydate, int id, QString item, float price, int quantity);
+    void setItem(Date mydate, int id, QString item, float price, int quantity);
+
+    int GetId() const;
+
+    int GetQuantity() const;
+
+    void UpdateQuantity (int newQuant);
 
 private:
     Date invDate;

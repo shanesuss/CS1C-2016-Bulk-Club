@@ -8,8 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     MemberList accessMemList;
+    SalesList accessSalesList;
 
     accessMemList.InitializeMemberList();
+    accessSalesList.InitializeSalesList();
 }
 
 MainWindow::~MainWindow()

@@ -1,9 +1,9 @@
-#include "Executive.h"
+#include "executive.h"b
 
 Executive::Executive() :Member()
 {
     rebate = 0;
-    SetMemberType("Executive");
+    GetNewType() = "Executive";
 }
 
 Executive::Executive(QString newName,
@@ -13,7 +13,7 @@ Executive::Executive(QString newName,
                      :Member(newName,newNum,newDate,newSpent)
 {
     UpdateRebate();
-    SetMemberType("Executive");
+    GetNewType() = "Executive";
 }
 
 Executive::~Executive() {}
