@@ -54,14 +54,12 @@ void MemberList::InitializeMemberList()
          if(memType == "Executive")
          {
              newExec.SetMember(memName,memNumber,newDate,0);
-             qDebug() << newExec.GetMemberInfo();
 
              memberList.push_back(newExec);
          }
          else if(memType == "Regular")
          {
              newMem.SetMember(memName,memNumber,newDate,0);
-                qDebug () << newMem.GetMemberInfo();
              memberList.push_back(newMem);
          }
     }
@@ -81,6 +79,7 @@ bool MemberList::DeleteMember(int idNum)
         if(memberList[i].GetId() == idNum)
         {
             memberList.erase(memberList.begin() + i);
+            qDebug () << " " << i;
             return true;
         }
     }
@@ -98,7 +97,6 @@ bool MemberList::DeleteMember(QString searchName)
         if(memberList[i].GetName() == searchName)
         {
             memberList.erase(memberList.begin() + i);
-
             remove = true;
         }
     }
@@ -126,7 +124,7 @@ QString MemberList::GetMemberOnlyList() const
 
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
-        if(memberList[i].GetMemberType() == "Member")
+        if(memberList[i].GetMemberType() == "Regular")
         {
             tempInfo += memberList[i].GetMemberInfo();
         }
@@ -137,7 +135,7 @@ QString MemberList::GetMemberOnlyList() const
 
 Member MemberList::GetMember(int idNum) const
 {
-   for(unsigned int i = 0; i < memberList.size(); i++)
+   for(int i = 0; i < memberList.size(); i++)
    {
        if(memberList[i].GetId() == idNum)
        {

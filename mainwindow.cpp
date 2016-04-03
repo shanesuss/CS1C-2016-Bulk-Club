@@ -41,24 +41,9 @@ void MainWindow::on_pushButton_12_clicked()
 }
 
 
-void MainWindow::on_pushButton_16_clicked()
-{
-    delItemUi = new DeleteItem(this);
-
-    delItemUi->show();
-}
-
-void MainWindow::on_pushButton_15_clicked()
-{
-    addItemUi = new AddItem(this);
-
-    addItemUi->show();
-}
-
-
 void MainWindow::on_pushButton_4_clicked()
 {
-    ui->textBrowser_7->setText(accessMemList.GetMemberList());
+    ui->textBrowser_7->setText(accessMemList.GetMemberOnlyList());
     ui->textBrowser_8->setText(accessMemList.GetExecutiveOnlyList());
 }
 
@@ -90,17 +75,17 @@ void MainWindow::on_pushButton_2_clicked()
 
     newType = ui->lineEdit_7->text();
 
-    newDay = ui->lineEdit_3->text();
+    newDay = ui->lineEdit_4->text();
 
     day = newDay.toInt(&ok, 10);
 
-    newMonth = ui->lineEdit_4->text();
+    newMonth = ui->lineEdit_3->text();
 
     month = newMonth.toInt(&ok, 10);
 
-    newMonth = ui->lineEdit_5->text();
+    newYear = ui->lineEdit_5->text();
 
-    month = newMonth.toInt(&ok, 10);
+    year = newYear.toInt(&ok, 10);
 
     Date newExpDate(month, day, year);
 
