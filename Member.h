@@ -23,7 +23,10 @@ public:
     Member();
 
     /* Non-Default Constructor - Initialize with referenced values */
-    Member(QString newName, int newID, Date newDate, double newSpent);
+    Member(QString newName,
+           int newID,
+           Date newDate,
+           double newSpent);
 
     /* Destructor - delete instance of object */
     ~Member();

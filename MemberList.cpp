@@ -1,4 +1,5 @@
 #include "MemberList.h"
+#include <QDebug>
 
 MemberList::MemberList() {}
 
@@ -6,7 +7,7 @@ MemberList::~MemberList() {}
 
 void MemberList::InitializeMemberList()
 {
-    QFile       shoppers(":/BulkClubMembers.txt");
+    QFile       shoppers(":BulkClubMembers.txt");
     QTextStream infile(&shoppers);
     QString     memName;
     QString     memNum;
@@ -23,7 +24,6 @@ void MemberList::InitializeMemberList()
 
     //open the text file to read from
     shoppers.open(QIODevice::ReadOnly);
-
     //will keep reading until the end of the file is reached &
     //will read line by line and store info as a QString which
     //will then be used to convert to whatever data type is
@@ -54,13 +54,14 @@ void MemberList::InitializeMemberList()
          if(memType == "Executive")
          {
              newExec.SetMember(memName,memNumber,newDate,0);
+             qDebug() << newExec.GetMemberInfo();
 
              memberList.push_back(newExec);
          }
          else if(memType == "Regular")
          {
              newMem.SetMember(memName,memNumber,newDate,0);
-
+                qDebug () << newMem.GetMemberInfo();
              memberList.push_back(newMem);
          }
     }
@@ -127,7 +128,7 @@ QString MemberList::GetMemberOnlyList() const
     {
         if(memberList[i].GetMemberType() == "Member")
         {
-            tempInfo = memberList[i].GetMemberInfo();
+            tempInfo += memberList[i].GetMemberInfo();
         }
     }
 
@@ -155,6 +156,7 @@ QString MemberList::GetMemberList() const
 {
     QString tempInfo;
 
+
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
         tempInfo += memberList[i].GetMemberInfo();
@@ -180,3 +182,29 @@ int MemberList::SearchMember(QString searchName) const
     }
     return -1;
 }
+
+void MemberList::FindMemberAndType(int     id,
+                                   QString &theName,
+                                   QString &theType)
+{
+        int index = 0;
+        bool found = false;
+
+        while(!found && index < memberList.size())
+        {
+            if(memberList[index].GetId() == id)
+            {
+                theName = memberList[index].GetName();
+
+                theType = memberList[index].GetMemberType();
+
+                found = true;
+            }
+            else
+            {
+                index++;
+            }
+        }
+}
+
+

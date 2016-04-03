@@ -23,43 +23,42 @@ void SalesList::InitializeSalesList()
     float       price;
     int         quantity;
 
+    inventory.open(QIODevice::ReadOnly);
 
-        inventory.open(QIODevice::ReadOnly);
+    while(!inFile.atEnd())
+    {
+        memExpDate = inFile.readLine();
+        QStringList dateStr = memExpDate.split("/");
 
-        while(!inFile.atEnd())
-        {
-            memExpDate = inFile.readLine();
-            QStringList dateStr = memExpDate.split("/");
+        dateStr.at(0).toInt(&ok, 10);
+        dateStr.at(1).toInt(&ok, 10);
+        dateStr.at(2).toInt(&ok, 10);
 
-            dateStr.at(0).toInt(&ok, 10);
-            dateStr.at(1).toInt(&ok, 10);
-            dateStr.at(2).toInt(&ok, 10);
+          Date newDate(dateStr.at(0).toInt(&ok, 10),
+                       dateStr.at(1).toInt(&ok, 10),
+                       dateStr.at(2).toInt(&ok, 10));
 
-              Date newDate(dateStr.at(0).toInt(&ok, 10),
-                           dateStr.at(1).toInt(&ok, 10),
-                           dateStr.at(2).toInt(&ok, 10));
+          memNum = inFile.readLine();
+          memNumber = memNum.toInt();
 
-              memNum = inFile.readLine();
-              memNumber = memNum.toInt();
+          item  = inFile.readLine();
+          QString stuff = inFile.readLine();
 
-              item  = inFile.readLine();
-              QString stuff = inFile.readLine();
+          QStringList splitList = stuff.split(' ', QString::SkipEmptyParts);
+          price = splitList.at(0).toFloat();
 
-              QStringList splitList = stuff.split(' ', QString::SkipEmptyParts);
-              price = splitList.at(0).toFloat();
+          quantity = splitList.at(1).toInt(&ok, 10);
 
-              quantity = splitList.at(1).toInt(&ok, 10);
-
-              if(FindItem(memNumber))
-              {
-                   UpdateItem(memNumber, quantity);
-              }
-              else
-              {
-                  newInv.setItem(newDate, memNumber, item, price, quantity);
-                  inventoryList.push_back(newInv);
-              }
-        }
+          if(FindItem(memNumber))
+          {
+               UpdateItem(memNumber, quantity);
+          }
+          else
+          {
+              newInv.setItem(newDate, memNumber, item, price, quantity);
+              inventoryList.push_back(newInv);
+          }
+    }
 }
 
 //void SalesList::AddItem(SalesInventory newItem)
@@ -131,3 +130,18 @@ bool SalesList::FindItem(int memNum)
 
     return foundMem;
 }
+QString SalesList::GetSalesList() const
+{
+    QString tempInfo;
+
+    for(unsigned int i = 0; i < inventoryList.size(); i++)
+    {
+
+            tempInfo += inventoryList[i].getSalesInfo();
+
+    }
+
+    return tempInfo;
+
+}
+

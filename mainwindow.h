@@ -14,14 +14,20 @@
 #include "SalesList.h"
 #include <QApplication>
 #include <iostream>
+#include <iomanip>
 #include <QTextStream>
 #include <QFile>
 #include <string>
 #include <QDebug>
 #include <fstream>
+#include <sstream>
+#include <ostream>
 #include <vector>
 #include "execreg.h"
+#include<QString>
+#include <string>
 
+using namespace std;
 
 namespace Ui {
 class MainWindow;
@@ -39,8 +45,6 @@ public:
 
 private slots:
 
-    void on_pushButton_11_clicked();
-
     void on_pushButton_8_clicked();
 
     void on_pushButton_9_clicked();
@@ -50,6 +54,12 @@ private slots:
     void on_pushButton_16_clicked();
 
     void on_pushButton_15_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_7_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -65,6 +75,10 @@ private:
     AddItem *addItemUi;
 
     DeleteItem *delItemUi;
+
+    MemberList accessMemList;
+
+    SalesList accessSalesList;
 
     void InitializeItemList();
 };

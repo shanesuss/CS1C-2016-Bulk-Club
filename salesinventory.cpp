@@ -32,3 +32,13 @@ void SalesInventory::UpdateQuantity(int newQuant)
 {
     invQuantity += newQuant;
 }
+
+QString SalesInventory::getSalesInfo()const{
+
+
+        ostringstream output;
+        output  << fixed << left << "| " << setw(10) << invItem.toStdString()
+                << " | "  <<  "$" << setprecision(2) << fixed << setw(8) << invPrice << " |\n";
+        return QString::fromStdString(output.str());
+    }
+

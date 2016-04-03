@@ -12,3 +12,15 @@ AddItem::~AddItem()
 {
     delete ui;
 }
+
+void AddItem::on_pushButton_clicked()
+{
+    QString itemName;
+    QString itemPrice;
+
+    itemName  = ui->lineEdit->text();
+
+    itemPrice = ui->lineEdit_2->text();
+
+
+}

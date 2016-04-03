@@ -31,7 +31,6 @@
 
 #include "Executive.h"
 #include "Member.h"
-#include "mainwindow.h"
 #include <QApplication>
 #include <iostream>
 #include <iomanip>
@@ -75,6 +74,10 @@ public:
     QString GetExecutiveOnlyList() const;
 
     void GetVector(vector<Member> &list) const;
+
+    void FindMemberAndType(int     id,
+                           QString &theName,
+                           QString &theType);
 
 
 private:

@@ -2,7 +2,11 @@
 #define SALESINVENTORY_H
 #include <QString>
 #include"Date.h"
-
+#include<ostream>
+#include<sstream>
+#include<iostream>
+#include<iomanip>
+using namespace std;
 class SalesInventory
 {
 public:
@@ -16,6 +20,8 @@ public:
     int GetQuantity() const;
 
     void UpdateQuantity (int newQuant);
+
+    QString getSalesInfo()const;
 
 private:
     Date invDate;

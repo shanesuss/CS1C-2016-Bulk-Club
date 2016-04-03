@@ -9,16 +9,16 @@ class Executive: public Member{
 public:
     Executive();
     Executive(QString newName,
-              int  newNum,
+              int     newNum,
               Date    newDate,
-              double   newSpent);
+              double  newSpent);
 
     ~Executive();
 
     //void ChangeType(QString newType);
 
     void SetMember(QString newName,
-                   int newNum,
+                   int     newNum,
                    Date    newDate,
                    double   newSpent);
 
@@ -45,3 +45,4 @@ private:
 };
 
 #endif // EXECUTIVE_H
+

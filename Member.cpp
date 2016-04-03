@@ -1,12 +1,12 @@
 #include "Member.h"
-
+#include <ostream>
 Member::~Member() {}
 
 Member::Member()
 {
     name = "";
     idNum = 0;
-    memberType = "Member";
+    memberType = "Regular";
     expDate.SetDate(0,0,0);
     totalSpent = 0.0;
 }
@@ -15,7 +15,7 @@ Member::Member(QString newName, int newID, Date newDate, double newTotal)
 {
     name = newName;
     idNum = newID;
-    memberType = "Member";
+    memberType = "Regular";
     expDate = newDate;
     totalSpent = newTotal;
 }
@@ -34,13 +34,13 @@ Date Member::GetExpirationDate() const
 bool Member::operator>(Member compareto) const
 {
     if(idNum > compareto.idNum) { return true; }
-	else { return false; } 
+    else { return false; }
 }
 
 bool Member::operator<(Member compareto) const
 {
     if(idNum < compareto.idNum) { return true; }
-	else { return false; } 
+    else { return false; }
 }
 
 int Member::GetId() const
@@ -51,8 +51,12 @@ int Member::GetId() const
 QString Member::GetMemberInfo() const
 {
 
-
-    return "| " + name + " | " + idNum + " | " + totalSpent;
+    ostringstream output;
+    output  << fixed << left << "| " << setw(25) << name.toStdString()
+                << " | "  << setw(5) << idNum << " | "
+                << setw(12) << expDate.DisplayDate() << " | "
+                <<  "$" << setprecision(2) << fixed << setw(8) << totalSpent << " |\n";
+    return QString::fromStdString(output.str());
 }
 
 QString Member::GetMemberType() const

@@ -27,7 +27,7 @@ SOURCES += main.cpp\
     salesinventory.cpp \
     deleteitem.cpp \
     SalesList.cpp \
-    ../../Downloads/CS1C-2016-Bulk-Club-master/CS1C-2016-Bulk-Club-master/Executive.cpp
+    executive.cpp
 
 HEADERS  += mainwindow.h \
     Date.h \
@@ -43,13 +43,10 @@ HEADERS  += mainwindow.h \
     additem.h \
     salesinventory.h \
     deleteitem.h \
-    SalesList.h \
-    ../../Downloads/CS1C-2016-Bulk-Club-master/CS1C-2016-Bulk-Club-master/Executive.h
+    SalesList.h
 
 FORMS    += mainwindow.ui \
     execreg.ui \
-    newregular.ui \
-    newexecutive.ui \
     dailysales.ui \
     memreport.ui \
     deletemember.ui \

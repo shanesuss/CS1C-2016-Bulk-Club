@@ -1,7 +1,6 @@
 #ifndef SALESLIST_H
 #define SALESLIST_H
 #include "salesinventory.h"
-#include "mainwindow.h"
 #include <QApplication>
 #include <iostream>
 #include <QApplication>
@@ -24,7 +23,7 @@ public:
     void PrintItemList();
     void UpdateItem(int memNum, int newQuant);
     bool FindItem(int memNum);
-    
+    QString GetSalesList() const;
 
 private:
     vector<SalesInventory> inventoryList;

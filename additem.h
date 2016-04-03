@@ -2,6 +2,8 @@
 #define ADDITEM_H
 
 #include <QDialog>
+#include "SalesList.h"
+#include "salesinventory.h"
 
 namespace Ui {
 class AddItem;
@@ -14,6 +16,9 @@ class AddItem : public QDialog
 public:
     explicit AddItem(QWidget *parent = 0);
     ~AddItem();
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::AddItem *ui;
