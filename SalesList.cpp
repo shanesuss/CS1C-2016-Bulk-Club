@@ -49,9 +49,9 @@ void SalesList::InitializeSalesList()
 
           quantity = splitList.at(1).toInt(&ok, 10);
 
-          if(FindItem(memNumber))
+          if(FindItem(item))
           {
-               UpdateItem(memNumber, quantity);
+               UpdateItem(item, quantity);
           }
           else
           {
@@ -61,24 +61,33 @@ void SalesList::InitializeSalesList()
     }
 }
 
-//void SalesList::AddItem(SalesInventory newItem)
-//{
-//    inventoryList.push_back(newItem);
-//}
+void SalesList::AddItem(SalesInventory newItem)
+{
+    inventoryList.push_back(newItem);
+}
 
-//void SalesList::DeleteItem()
-//{
+bool SalesList::DeleteItem(QString itemName)
+{
+    for(unsigned int i = 0; i < inventoryList.size(); i++)
+    {
+        if(inventoryList[i].GetItemName() == itemName)
+        {
+            inventoryList.erase(inventoryList.begin() + i);
 
-//}
+            return true;
+        }
+    }
+    return false;
+}
 
 void SalesList::PrintItemList()
 {
 
 }
 
-void SalesList::UpdateItem(int memNum, int newQuant)
+void SalesList::UpdateItem(QString name,
+                           int     newQuant)
 {
-    SalesInventory currItem;
     int  index;
     int  currQuant;
     bool found;
@@ -88,15 +97,11 @@ void SalesList::UpdateItem(int memNum, int newQuant)
 
     while(!found)
     {
-        currItem = inventoryList[index];
-
-        if(currItem.GetId() == memNum)
+        if(inventoryList[index].GetItemName() == name)
         {
             found = true;
 
-            currItem.UpdateQuantity(newQuant);
-
-            inventoryList[index] = currItem;
+            inventoryList[index].UpdateQuantity(newQuant);
         }
         else
         {
@@ -105,9 +110,8 @@ void SalesList::UpdateItem(int memNum, int newQuant)
     }
 }
 
-bool SalesList::FindItem(int memNum)
+bool SalesList::FindItem(QString name)
 {
-    SalesInventory currItem;
     bool           foundMem;
     int            index;
 
@@ -116,9 +120,7 @@ bool SalesList::FindItem(int memNum)
 
     while(!foundMem && index < inventoryList.size())
     {
-        currItem = inventoryList[index];
-
-        if(currItem.GetId() == memNum)
+        if(inventoryList[index].GetItemName() == name)
         {
             foundMem = true;
         }
@@ -130,18 +132,16 @@ bool SalesList::FindItem(int memNum)
 
     return foundMem;
 }
+
 QString SalesList::GetSalesList() const
 {
     QString tempInfo;
 
     for(unsigned int i = 0; i < inventoryList.size(); i++)
     {
-
-            tempInfo += inventoryList[i].getSalesInfo();
-
+        tempInfo += inventoryList[i].getSalesInfo();
     }
 
     return tempInfo;
 
 }
-

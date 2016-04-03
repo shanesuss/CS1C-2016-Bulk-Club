@@ -15,20 +15,22 @@ public:
 
     void setItem(Date mydate, int id, QString item, float price, int quantity);
 
+    QString GetItemName() const;
+
     int GetId() const;
 
     int GetQuantity() const;
 
     void UpdateQuantity (int newQuant);
 
-    QString getSalesInfo()const;
+    QString getSalesInfo() const;
 
 private:
-    Date invDate;
-    int invId;
+    Date    invDate;
+    int     invId;
     QString invItem;
-    float invPrice;
-    int invQuantity;
+    float   invPrice;
+    int     invQuantity;
 
 };
 

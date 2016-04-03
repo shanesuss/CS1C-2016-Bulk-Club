@@ -19,10 +19,10 @@ public:
     SalesList();
     void InitializeSalesList();
     void AddItem(SalesInventory newItem);
-    void DeleteItem();
+    bool DeleteItem(QString itemName);
     void PrintItemList();
-    void UpdateItem(int memNum, int newQuant);
-    bool FindItem(int memNum);
+    void UpdateItem(QString name, int newQuant);
+    bool FindItem(QString name);
     QString GetSalesList() const;
 
 private:

@@ -20,7 +20,6 @@ SOURCES += main.cpp\
     execreg.cpp \
     newregular.cpp \
     newexecutive.cpp \
-    dailysales.cpp \
     memreport.cpp \
     deletemember.cpp \
     additem.cpp \
@@ -37,7 +36,6 @@ HEADERS  += mainwindow.h \
     execreg.h \
     newregular.h \
     newexecutive.h \
-    dailysales.h \
     memreport.h \
     deletemember.h \
     additem.h \
@@ -47,7 +45,6 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     execreg.ui \
-    dailysales.ui \
     memreport.ui \
     deletemember.ui \
     additem.ui \

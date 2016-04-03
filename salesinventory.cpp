@@ -18,6 +18,10 @@ void SalesInventory::setItem(Date    mydate,
     invQuantity = quantity;
 }
 
+QString SalesInventory::GetItemName() const
+{
+    return invItem;
+}
 int SalesInventory::GetId() const
 {
     return invId;
