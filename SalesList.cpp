@@ -145,3 +145,29 @@ QString SalesList::GetSalesList() const
     return tempInfo;
 
 }
+
+
+SalesInventory SalesList::GetItem(QString name) const
+{
+    for(unsigned int i = 0; i < inventoryList.size(); i++)
+    {
+        if(inventoryList[i].GetItemName() == name)
+        {
+            return inventoryList[i];
+        }
+    }
+    throw -1;
+}
+
+QString SalesList::GetMemberSalesList(int id) const
+{
+    ostringstream output;
+    for(unsigned int i = 0; i < inventoryList.size(); i++)
+    {
+        if(inventoryList[i].GetId() == id)
+        {
+            output << inventoryList[i].getSalesInfo().toStdString();
+        }
+    }
+    return QString::fromStdString(output.str());
+}

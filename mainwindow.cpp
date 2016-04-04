@@ -481,6 +481,7 @@ void MainWindow::on_pushButton_5_clicked()
     QString itemPrice;
     float   price;
     SalesInventory newItem;
+    Date newDate(4,3,2016);
 
     itemName = ui->lineEdit_9->text();
 
@@ -488,5 +489,47 @@ void MainWindow::on_pushButton_5_clicked()
 
     price = itemPrice.toFloat();
 
+    newItem = SalesInventory(newDate, 394850, itemName, price, 100);
 
+    accessSalesList.AddItem(newItem);
+
+    ui->textBrowser_6->setText(accessSalesList.GetSalesList());
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    accessSalesList.DeleteItem(ui->lineEdit_9->text());
+
+    ui->textBrowser_6->setText(accessSalesList.GetSalesList());
+}
+
+void MainWindow::on_pushButton_ExpirationDates_clicked()
+{
+    int month = ui->lineEdit_ExpirationDate->text().toInt();
+    ui->textBrowser_ExpirationDate->setText(accessMemList.GetExpirationDates(month));
+}
+
+void MainWindow::on_pushButton_ItemReport_clicked()
+{
+    QString output;
+    try{
+     SalesInventory temp = accessSalesList.GetItem(ui->lineEdit_9->text());
+     output = temp.getSalesInfo();
+    }catch (int e)
+    {
+        output = "Error while processing input -- not in list!";
+    }
+    ui->textBrowser_6->setText(output);
+}
+
+void MainWindow::on_pushButton_MemberPurchases_clicked()
+{
+    ui->textBrowser_ExpirationDate->setText(
+                accessSalesList.GetMemberSalesList(ui->lineEdit_MemberPurchases->text().toInt()));
+}
+
+void MainWindow::on_pushButton_MembershipStatus_clicked()
+{
+    ui->textBrowser_7->setText(accessMemList.GetMemberUpgrades());
+    ui->textBrowser_8->setText(accessMemList.GetExecutiveDowngrades());
 }

@@ -11,6 +11,7 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include "SalesList.h"
 #include "Date.h"
 using namespace std;
 
@@ -51,6 +52,9 @@ public:
     /* GetMemberInfo - return formatted list of user info */
     QString GetMemberInfo() const;
 
+    /* returns copy of saleslist*/
+    SalesList GetSalesList() const;
+
 /* Modifiers */
     void SetMember(QString newName,
                    int  newNum,
@@ -59,6 +63,9 @@ public:
 
     /* SetName - change name */
     void SetName(QString newName);
+
+    /* Adds new purchase*/
+    void AddPurchase(SalesInventory newPurchase);
 
     /* SetID - change idNum */
     void SetID(int newId);
@@ -75,10 +82,13 @@ public:
     /* AddPurchase - adds newPurchase to totalSpent (i.e. a new transaction) */
     void AddPurchase(double newPurchase);
 
+    /* returns true if member should change to Executive, false if not worth it */
+    bool ShouldChangeMember();
     bool operator<(Member compareto) const;
     bool operator>(Member compareto) const;
 private:
     QString name;
+    SalesList purchaseList;
     int    idNum;
     QString memberType;
     Date   expDate;

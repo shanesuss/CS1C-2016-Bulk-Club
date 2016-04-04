@@ -207,4 +207,69 @@ void MemberList::FindMemberAndType(int     id,
         }
 }
 
+QString MemberList::GetExpirationDates(int month) const
+{
+    ostringstream out;
+    for(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetExpirationDate().GetMonth() == month)
+        {
+            out << "| " << setw(32) << memberList[i].GetName().toStdString() << " | " << memberList[i].GetId();
+            if(memberList[i].GetMemberType() == "Executive")
+            {
+                out << " $125\n";
+            }
+            else
+            {
+                out << "$45\n";
+            }
+        }
+    }
+return QString::fromStdString(out.str());
+}
 
+QString MemberList::GetExecutiveDowngrades()
+{
+    QString output;
+    for(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetMemberType() == "Executive")
+        {
+            if(!memberList[i].ShouldChangeMember())
+            {
+                output += memberList[i].GetMemberInfo();
+            }
+        }
+    }
+    return output;
+}
+
+QString MemberList::GetMemberUpgrades()
+{
+    QString output;
+    for(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetMemberType() == "Regular")
+        {
+            if(memberList[i].ShouldChangeMember())
+            {
+                output += memberList[i].GetMemberInfo();
+            }
+        }
+    }
+    return output;
+}
+
+QString MemberList::GetRebates()
+{
+    QString output;
+    for(unsigned int i = 0; i < memberList.size(); i++)
+    {
+        if(memberList[i].GetMemberType() == "Regular")
+        {
+            /********Needs work!******/
+            Executive newExec = static_cast<Executive>(memberList[i]);
+            output += newExec.GetRebate();
+        }
+    }
+}

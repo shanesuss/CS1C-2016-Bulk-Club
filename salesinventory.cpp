@@ -5,6 +5,19 @@ SalesInventory::SalesInventory()
 
 }
 
+SalesInventory::SalesInventory(Date myDate,
+                               int id,
+                               QString item,
+                               float price,
+                               int quantity)
+{
+    invDate = myDate;
+    invId  = id;
+    invItem = item;
+    invPrice = price;
+    invQuantity = quantity;
+}
+
 void SalesInventory::setItem(Date    mydate,
                              int     id,
                              QString item,

@@ -21,9 +21,11 @@ public:
     void AddItem(SalesInventory newItem);
     bool DeleteItem(QString itemName);
     void PrintItemList();
+    SalesInventory GetItem(QString name) const;
     void UpdateItem(QString name, int newQuant);
     bool FindItem(QString name);
     QString GetSalesList() const;
+    QString GetMemberSalesList(int id) const;
 
 private:
     vector<SalesInventory> inventoryList;

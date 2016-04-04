@@ -58,6 +58,10 @@ public:
     
     bool DeleteMember(QString searchName);
 
+    QString GetExecutiveDowngrades();
+    QString GetRebates();
+    QString GetMemberUpgrades();
+
     //Should return pos. of member in list, or -1 if not in list
     int SearchMember(int idNum) const;
 
@@ -72,6 +76,7 @@ public:
     QString GetMemberOnlyList() const;
 
     QString GetExecutiveOnlyList() const;
+    QString GetExpirationDates(int month) const;
 
     void GetVector(vector<Member> &list) const;
 

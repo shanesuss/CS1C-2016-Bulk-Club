@@ -106,3 +106,18 @@ void Member::SetMember(QString newName, int newNum, Date newDate, double newSpen
     expDate = newDate;
     totalSpent = newSpent;
 }
+
+void Member::AddPurchase(SalesInventory newPurchase)
+{
+    purchaseList.AddItem(newPurchase);
+}
+
+SalesList Member::GetSalesList() const
+{
+    return purchaseList;
+}
+
+bool Member::ShouldChangeMember()
+{
+    return (totalSpent * 0.035 > 80) ? true : false;
+}

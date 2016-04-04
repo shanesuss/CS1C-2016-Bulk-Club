@@ -11,7 +11,7 @@ class SalesInventory
 {
 public:
     SalesInventory();
-    SalesInventory(Date mydate, int id, QString item, float price, int quantity);
+    SalesInventory(Date myDate, int id, QString item, float price, int quantity);
 
     void setItem(Date mydate, int id, QString item, float price, int quantity);
 
