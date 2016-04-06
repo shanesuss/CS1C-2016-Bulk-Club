@@ -5,6 +5,7 @@
 #include<ostream>
 #include<sstream>
 #include<iostream>
+#include<vector>
 #include<iomanip>
 using namespace std;
 class SalesInventory
@@ -18,12 +19,14 @@ public:
     QString GetItemName() const;
 
     int GetId() const;
-
+    float GetPrice() const;
     int GetQuantity() const;
 
     void UpdateQuantity (int newQuant);
 
     QString getSalesInfo() const;
+
+    void RemovebyIndex(int index, vector<SalesInventory> &list);
 
 private:
     Date    invDate;

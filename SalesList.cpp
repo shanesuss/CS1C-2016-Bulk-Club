@@ -1,12 +1,11 @@
 #include "SalesList.h"
-
 SalesList::SalesList()
 {
 
 }
 void SalesList::InitializeSalesList()
 {
-    QFile       inventory(":SalesReports.txt");
+    QFile       inventory(":/SalesReports.txt");
     QTextStream inFile(&inventory);
     QString     memName;
     QString     memNum;
@@ -79,10 +78,14 @@ bool SalesList::DeleteItem(QString itemName)
     }
     return false;
 }
-
-void SalesList::PrintItemList()
+SalesInventory SalesList::GetItem(int index) const
 {
+    return inventoryList[index];
+}
 
+unsigned int SalesList::GetSize() const
+{
+    return inventoryList.size();
 }
 
 void SalesList::UpdateItem(QString name,
@@ -133,7 +136,67 @@ bool SalesList::FindItem(QString name)
     return foundMem;
 }
 
-QString SalesList::GetSalesList() const
+void SalesList::SelectionSort(vector<SalesInventory> &list, int id)
+{
+    int pos_min;
+    SalesInventory temp;
+    int n = this->GetSize();
+
+    for(int i = 0; i < n-1; i++)
+    {
+        pos_min = i;
+        for(int j = i+1; j<n; j++)
+        {
+            qDebug() << list[j].GetId();
+            if(list[j].GetId() < list[pos_min].GetId())
+            {
+                pos_min = j;
+            }
+        }
+        if(pos_min != i)
+        {
+            temp = list[i];
+            list[i] = list[pos_min];
+            list[pos_min] = temp;
+        }
+    }
+}
+
+void SalesList::SelectionSort(vector<SalesInventory> &list, QString names)
+{
+    int pos_min;
+    SalesInventory temp;
+    int n = this->GetSize();
+
+    for(int i = 0; i < n-1; i++)
+    {
+        pos_min = i;
+        for(int j = i+1; j<n; j++)
+        {
+            qDebug() << list[j].GetId();
+            if(list[j].GetItemName() < list[pos_min].GetItemName())
+            {
+                pos_min = j;
+            }
+        }
+        if(pos_min != i)
+        {
+            temp = list[i];
+            list[i] = list[pos_min];
+            list[pos_min] = temp;
+        }
+    }
+}
+
+void SalesList::CopySalesList(vector<SalesInventory> &newList)
+{
+    for(int i = 0; i < inventoryList.size(); i++)
+    {
+        newList.push_back(inventoryList[i]);
+    }
+}
+
+QString SalesList::GetSalesListInfo() const
 {
     QString tempInfo;
 
@@ -171,3 +234,16 @@ QString SalesList::GetMemberSalesList(int id) const
     }
     return QString::fromStdString(output.str());
 }
+
+
+bool operator<(const SalesInventory &s1, const SalesInventory &s2)
+{
+    return (s1.GetItemName() < s2.GetItemName());
+}
+
+bool operator>(const SalesInventory &s1, const SalesInventory &s2)
+{
+    return (s1.GetItemName() > s2.GetItemName());
+}
+
+//inventoryList = sort(accessSalesList.begin(), accessSalesList.end());

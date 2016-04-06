@@ -1,18 +1,11 @@
 #ifndef MEMBER_H
 #define MEMBER_H
 
-/***********************************************
- * Name: Kayvon Haghighi
- * Class: CS 1C
- * Project: 1
-************************************************/
-
 #include <QString>
 #include <iomanip>
 #include <iostream>
 #include <string>
 #include "SalesList.h"
-#include "Date.h"
 using namespace std;
 
 class Member
@@ -22,6 +15,8 @@ public:
 /* Constructors/Destructors */
     /* Default Constructor - Initialize with default values of 0 */
     Member();
+    bool operator>(Member compareto) const;
+    bool operator<(Member compareto) const;
 
     /* Non-Default Constructor - Initialize with referenced values */
     Member(QString newName,
@@ -52,20 +47,18 @@ public:
     /* GetMemberInfo - return formatted list of user info */
     QString GetMemberInfo() const;
 
+    void UpdateSales();
     /* returns copy of saleslist*/
     SalesList GetSalesList() const;
 
 /* Modifiers */
     void SetMember(QString newName,
-                   int  newNum,
+                   int     newNum,
                    Date    newDate,
                    double newSpent);
 
     /* SetName - change name */
     void SetName(QString newName);
-
-    /* Adds new purchase*/
-    void AddPurchase(SalesInventory newPurchase);
 
     /* SetID - change idNum */
     void SetID(int newId);
@@ -80,13 +73,11 @@ public:
     void SetTotalSpent(double newTotalSpent);
 
     /* AddPurchase - adds newPurchase to totalSpent (i.e. a new transaction) */
-    void AddPurchase(double newPurchase);
+    void AddPurchase(double newPurchase, int quantity);
 
     /* returns true if member should change to Executive, false if not worth it */
     bool ShouldChangeMember();
-    bool operator<(Member compareto) const;
-    bool operator>(Member compareto) const;
-private:
+   private:
     QString name;
     SalesList purchaseList;
     int    idNum;

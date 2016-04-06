@@ -20,11 +20,7 @@ SOURCES += main.cpp\
     execreg.cpp \
     newregular.cpp \
     newexecutive.cpp \
-    memreport.cpp \
-    deletemember.cpp \
-    additem.cpp \
     salesinventory.cpp \
-    deleteitem.cpp \
     SalesList.cpp \
     executive.cpp
 
@@ -36,19 +32,12 @@ HEADERS  += mainwindow.h \
     execreg.h \
     newregular.h \
     newexecutive.h \
-    memreport.h \
-    deletemember.h \
-    additem.h \
     salesinventory.h \
-    deleteitem.h \
     SalesList.h
 
 FORMS    += mainwindow.ui \
     execreg.ui \
-    memreport.ui \
-    deletemember.ui \
-    additem.ui \
-    deleteitem.ui
+    additem.ui
 
 DISTFILES +=
 

@@ -30,7 +30,6 @@
  */
 
 #include "Executive.h"
-#include "Member.h"
 #include <QApplication>
 #include <iostream>
 #include <iomanip>
@@ -52,12 +51,15 @@ public:
 
     //Should add member to bottom of list
     void AddMember(Member newMember);
+    void UpdateSalesList();
 
     //Should delete member by ID, return true if successful, false if member not in list
     bool DeleteMember(int idNum);
     
     bool DeleteMember(QString searchName);
+    unsigned int GetSize () const;
 
+//    void AddPurchase(int index, SalesInventory inv);
     QString GetExecutiveDowngrades();
     QString GetRebates();
     QString GetMemberUpgrades();
@@ -72,6 +74,7 @@ public:
     Member GetMember(int idNum) const;
 
     QString GetMemberList() const;
+    Member GetIndex(int i);
 
     QString GetMemberOnlyList() const;
 
@@ -83,11 +86,15 @@ public:
     void FindMemberAndType(int     id,
                            QString &theName,
                            QString &theType);
+    void ReturnSortedList();
 
+    void SelectionSort(vector<Member> &list);
 
 private:
     vector<Member> memberList;
 
 };
+
+
 
 #endif // MEMBERLIST_H

@@ -6,10 +6,6 @@
 #include "Executive.h"
 #include "Date.h"
 #include "MemberList.h"
-#include "memreport.h"
-#include "deletemember.h"
-#include "deleteitem.h"
-#include "additem.h"
 #include "SalesList.h"
 #include <QApplication>
 #include <iostream>
@@ -44,16 +40,13 @@ public:
 
     bool FindMemInstance(vector<QString> nameList,
                          QString         currName);
+    void UpdateMemberList();
 
 private slots:
 
     void on_pushButton_9_clicked();
 
     void on_pushButton_12_clicked();
-
-    void on_pushButton_16_clicked();
-
-    void on_pushButton_15_clicked();
 
     void on_pushButton_2_clicked();
 
@@ -81,18 +74,14 @@ private slots:
 
     void on_pushButton_MembershipStatus_clicked();
 
+    void on_pushButton_GetRebates_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     ExecReg *membership;
-
-    MemReport *memReportUi;
-
-    DeleteMember *delMemUi;
-
-    AddItem *addItemUi;
-
-    DeleteItem *delItemUi;
 
     MemberList accessMemList;
 

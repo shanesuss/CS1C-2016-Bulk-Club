@@ -109,13 +109,12 @@ bool MemberList::DeleteMember(QString searchName)
 QString MemberList::GetExecutiveOnlyList() const
 {
     QString tempInfo;
-    string newLine = "\n";
 
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
         if(memberList[i].GetMemberType() == "Executive")
         {
-            tempInfo += memberList[i].GetMemberInfo() + QString::fromStdString(newLine);
+            tempInfo += memberList[i].GetMemberInfo();
         }
     }
     return tempInfo;
@@ -124,13 +123,12 @@ QString MemberList::GetExecutiveOnlyList() const
 QString MemberList::GetMemberOnlyList() const
 {
     QString tempInfo;
-    string  newLine = "\n";
 
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
         if(memberList[i].GetMemberType() == "Regular")
         {
-            tempInfo += memberList[i].GetMemberInfo() + QString::fromStdString(newLine);
+            tempInfo += memberList[i].GetMemberInfo();
         }
     }
 
@@ -216,15 +214,14 @@ QString MemberList::GetExpirationDates(int month) const
     {
         if(memberList[i].GetExpirationDate().GetMonth() == month)
         {
-            out << left << "| " << setw(32) << memberList[i].GetName().toStdString() << " | " << memberList[i].GetId() << " | ";
-
+            out << "| " << setw(32) << memberList[i].GetName().toStdString() << " | " << memberList[i].GetId();
             if(memberList[i].GetMemberType() == "Executive")
             {
-                out << "$125 |\n";
+                out << " $125\n";
             }
             else
             {
-                out << setw(4) << "$45" << " |\n";
+                out << "$45\n";
             }
         }
     }
@@ -266,20 +263,16 @@ QString MemberList::GetMemberUpgrades()
 QString MemberList::GetRebates()
 {
     ostringstream output;
-
-    SelectionSort(memberList);
-
     for(unsigned int i = 0; i < memberList.size(); i++)
     {
-        if(memberList[i].GetMemberType() == "Executive")
+        if(memberList[i].GetMemberType() == "Regular")
         {
-            output << left << "| "<< setw(30) << memberList[i].GetName().toStdString() << " | " << memberList[i].GetId() << " | "
-                   << setw(7) << memberList[i].GetTotalSpent() * 0.035 << " |\n";
+
+            output << "" << memberList[i].GetTotalSpent() * 0.035;
+            output << "\n";
+
         }
     }
-qDebug() << "FAIL 2\n";
-
-qDebug() << "FAIL 3\n";
     return QString::fromStdString(output.str());
 }
 
@@ -318,19 +311,17 @@ void MemberList::ReturnSortedList()
 }
 
 
-void MemberList::SelectionSort(vector<Member> &list)
+void MemberList::SeletionSort(vector<Member> &list)
 {
     int pos_min;
     Member temp;
-    int n = this->GetSize();
-qDebug() << "FAIL 2.1\n";
+   int n = this->GetSize();
     for(int i = 0; i < n-1; i++)
     {
-qDebug() << "FAIL 2.2\n";
         pos_min = i;
         for(int j = i+1; j<n; j++)
         {
-            if(list[j].GetId() < list[pos_min].GetId())
+            if(list[j].GetName() < list[pos_min].GetName())
             {
                 pos_min = j;
             }
@@ -342,5 +333,4 @@ qDebug() << "FAIL 2.2\n";
             list[pos_min] = temp;
         }
     }
-qDebug() << "FAIL 2.5\n";
 }

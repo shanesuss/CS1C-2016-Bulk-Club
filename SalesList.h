@@ -13,6 +13,8 @@
 
 using namespace std;
 
+class MemberList;
+
 class SalesList
 {
 public:
@@ -21,11 +23,19 @@ public:
     void AddItem(SalesInventory newItem);
     bool DeleteItem(QString itemName);
     void PrintItemList();
+    void SelectionSort(vector<SalesInventory> &list, int id);
+    void SelectionSort(vector<SalesInventory> &list, QString names);
+    unsigned int GetSize() const;
+  //  void UpdatePurchases(MemberList myList);
     SalesInventory GetItem(QString name) const;
+    SalesInventory GetItem(int index) const;
     void UpdateItem(QString name, int newQuant);
+    void CopySalesList(vector<SalesInventory> &newList);
     bool FindItem(QString name);
-    QString GetSalesList() const;
+
+    QString GetSalesListInfo() const;
     QString GetMemberSalesList(int id) const;
+
 
 private:
     vector<SalesInventory> inventoryList;

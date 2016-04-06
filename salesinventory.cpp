@@ -18,6 +18,11 @@ SalesInventory::SalesInventory(Date myDate,
     invQuantity = quantity;
 }
 
+float SalesInventory::GetPrice() const
+{
+    return invPrice;
+}
+
 void SalesInventory::setItem(Date    mydate,
                              int     id,
                              QString item,
@@ -54,8 +59,12 @@ QString SalesInventory::getSalesInfo()const{
 
 
         ostringstream output;
-        output  << fixed << left << "| " << setw(10) << invItem.toStdString()
-                << " | "  <<  "$" << setprecision(2) << fixed << setw(8) << invPrice << " |\n";
+        output  << fixed << left << "| " << invId << " | " << setw(26) << invItem.toStdString()
+                << " | "  <<  "$" << setprecision(2) << fixed << setw(6) << invPrice << " |\n";
         return QString::fromStdString(output.str());
     }
 
+void SalesInventory::RemovebyIndex(int index, vector<SalesInventory> &list)
+{
+    list.erase(list.begin() + index);
+}

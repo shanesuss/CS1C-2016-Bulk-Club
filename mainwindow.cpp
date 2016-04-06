@@ -9,10 +9,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     accessMemList.InitializeMemberList();
     accessSalesList.InitializeSalesList();
-
+    UpdateMemberList();
+    accessMemList.GetMember(77777).UpdateSales();
     ui->textBrowser_7->setText(accessMemList.GetMemberOnlyList());
     ui->textBrowser_8->setText(accessMemList.GetExecutiveOnlyList());
-    ui->textBrowser_6->setText(accessSalesList.GetSalesList());
+    ui->textBrowser_6->setText(accessSalesList.GetSalesListInfo());
+    accessMemList.GetRebates();
 }
 
 MainWindow::~MainWindow()
@@ -20,13 +22,27 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
 void MainWindow::on_pushButton_9_clicked()
 {
-    memReportUi = new MemReport(this);
+    vector<SalesInventory> tempList;
 
-    memReportUi->show();
+    QString text;
+    ostringstream output;
+
+    accessSalesList.CopySalesList(tempList);
+    accessSalesList.SelectionSort(tempList, "");
+
+    for(unsigned int i = 0; i < tempList.size(); i++)
+    {
+        output << fixed << setprecision(2);
+        output << left << "| " << setw(26) << tempList[i].GetItemName().toStdString() << " | "
+               << setw(3) << tempList[i].GetQuantity()<< " | "
+               << "$" << setw(7) << tempList[i].GetPrice() << " | " << endl;
+
+        text += QString::fromStdString(output.str());
+    }
+
+    ui->textBrowser_5->setText(QString::fromStdString(output.str()));
 }
 
 void MainWindow::on_pushButton_12_clicked()
@@ -45,9 +61,8 @@ void MainWindow::on_pushButton_12_clicked()
     float       price;
     float       totalRev = 0;
     int         quantity;
-    int         totExecs = 0;
-    int         totRegs = 0;
-    vector<QString> nameList;
+    vector<QString> execList;
+    vector<QString> regList;
 
     day5.open(QIODevice::ReadOnly);
 
@@ -68,54 +83,42 @@ void MainWindow::on_pushButton_12_clicked()
 
         accessMemList.FindMemberAndType(memNumber, memName, memType);
 
-        out << left << setw(25) << memName.toStdString() << " | "
-            << setw(19) << item.toStdString() << " | " << quantity << " |\n";
+        out << left << setw(30) << memName.toStdString() << " | "
+            << setw(26) << item.toStdString() << " | " << setw(2) << quantity << " |\n";
 
         ui->textBrowser_5->setText(QString::fromStdString(out.str()));
 
         totalRev += (price * static_cast<float>(quantity));
 
-
-        nameList.push_back(memName);
-
         if(memType == "Executive")
         {
-            totExecs++;
+            if(execList.size() == 0 || !FindMemInstance(execList, memName))
+            {
+               execList.push_back(memName);
+            }
         }
         else
         {
-            totRegs++;
+            if(regList.size() == 0 || !FindMemInstance(regList, memName))
+            {
+                regList.push_back(memName);
+            }
         }
     }
-
     day5.close();
 
     out << fixed << setprecision(2);
-    out << "\n\nTOTAL REVENUE FOR THE DAY: " << "$" <<  totalRev << endl
-        << "TOTAL # OF EXECUTIVE MEMBERS: " << totExecs << endl
-        << "TOTAL # OF REGULAR MEMBERS: " << totRegs;
+    out << setw(30) << "\n\nTOTAL REVENUE FOR THE DAY" << ": "<< "$" <<  totalRev << endl
+        << setw(28) << "TOTAL # OF EXECUTIVE MEMBERS"  << ": "<< execList.size() << endl
+        << setw(28) << "TOTAL # OF REGULAR MEMBERS"    << ": "<< regList.size();
 
     ui->textBrowser_5->setText(QString::fromStdString(out.str()));
 }
 
 
-void MainWindow::on_pushButton_16_clicked()
-{
-    delItemUi = new DeleteItem(this);
-
-    delItemUi->show();
-}
-
-void MainWindow::on_pushButton_15_clicked()
-{
-    addItemUi = new AddItem(this);
-
-    addItemUi->show();
-}
-
-
 void MainWindow::on_pushButton_4_clicked()
 {
+    accessMemList.ReturnSortedList();
     ui->textBrowser_7->setText(accessMemList.GetMemberOnlyList());
     ui->textBrowser_8->setText(accessMemList.GetExecutiveOnlyList());
 }
@@ -196,9 +199,8 @@ void MainWindow::on_pushButton_7_clicked()
     float       price;
     float       totalRev = 0;
     int         quantity;
-    int         totExecs = 0;
-    int         totRegs = 0;
-    vector<QString> nameList;
+    vector<QString> execList;
+    vector<QString> regList;
 
     day1.open(QIODevice::ReadOnly);
 
@@ -219,8 +221,8 @@ void MainWindow::on_pushButton_7_clicked()
 
         accessMemList.FindMemberAndType(memNumber, memName, memType);
 
-        out << left << setw(25) << memName.toStdString() << " | "
-            << setw(19) << item.toStdString() << " | " << quantity << " |\n";
+        out << left << setw(30) << memName.toStdString() << " | "
+            << setw(26) << item.toStdString() << " | " << setw(2) << quantity << " |\n";
 
         ui->textBrowser_5->setText(QString::fromStdString(out.str()));
 
@@ -228,20 +230,26 @@ void MainWindow::on_pushButton_7_clicked()
 
         if(memType == "Executive")
         {
-            totExecs++;
+            if(execList.size() == 0 || !FindMemInstance(execList, memName))
+            {
+               execList.push_back(memName);
+            }
         }
         else
         {
-            totRegs++;
+            if(regList.size() == 0 || !FindMemInstance(regList, memName))
+            {
+                regList.push_back(memName);
+            }
         }
     }
 
     day1.close();
 
     out << fixed << setprecision(2);
-    out << "\n\nTOTAL REVENUE FOR THE DAY: " << "$" <<  totalRev << endl
-        << "TOTAL # OF EXECUTIVE MEMBERS: " << totExecs << endl
-        << "TOTAL # OF REGULAR MEMBERS: " << totRegs;
+    out << setw(30) << "\n\nTOTAL REVENUE FOR THE DAY" << ": "<< "$" <<  totalRev << endl
+        << setw(28) << "TOTAL # OF EXECUTIVE MEMBERS"  << ": "<< execList.size() << endl
+        << setw(28) << "TOTAL # OF REGULAR MEMBERS"    << ": "<< regList.size();
 
     ui->textBrowser_5->setText(QString::fromStdString(out.str()));
 }
@@ -250,27 +258,23 @@ bool MainWindow::FindMemInstance(vector<QString> nameList,
                                  QString         currName)
 {
    int memInst = 0;
-   int index = 0;
    bool moreThanOnce;
 
-   while(index < nameList.size())
+   for(int i = 0; i < nameList.size(); i++)
    {
-       if(currName == nameList[index])
+       if(currName == nameList[i])
        {
            memInst++;
        }
-       else
-       {
-           index++;
-       }
    }
-   if(memInst == 0)
+
+   if(memInst >= 1)
    {
-       moreThanOnce = false;
+       moreThanOnce = true;
    }
    else
    {
-       moreThanOnce = true;
+       moreThanOnce = false;
    }
 
    return moreThanOnce;
@@ -293,9 +297,8 @@ void MainWindow::on_pushButton_8_clicked()
     float       price;
     float       totalRev = 0;
     int         quantity;
-    int         totExecs = 0;
-    int         totRegs = 0;
-    vector<QString> nameList;
+    vector<QString> execList;
+    vector<QString> regList;
 
     day2.open(QIODevice::ReadOnly);
 
@@ -316,8 +319,8 @@ void MainWindow::on_pushButton_8_clicked()
 
         accessMemList.FindMemberAndType(memNumber, memName, memType);
 
-        out << left << setw(25) << memName.toStdString() << " | "
-            << setw(19) << item.toStdString() << " | " << quantity << " |\n";
+        out << left << setw(30) << memName.toStdString() << " | "
+            << setw(26) << item.toStdString() << " | " << setw(2) << quantity << " |\n";
 
         ui->textBrowser_5->setText(QString::fromStdString(out.str()));
 
@@ -325,20 +328,26 @@ void MainWindow::on_pushButton_8_clicked()
 
         if(memType == "Executive")
         {
-            totExecs++;
+            if(execList.size() == 0 || !FindMemInstance(execList, memName))
+            {
+               execList.push_back(memName);
+            }
         }
         else
         {
-            totRegs++;
+            if(regList.size() == 0 || !FindMemInstance(regList, memName))
+            {
+                regList.push_back(memName);
+            }
         }
     }
 
     day2.close();
 
     out << fixed << setprecision(2);
-    out << "\n\nTOTAL REVENUE FOR THE DAY: " << "$" <<  totalRev << endl
-        << "TOTAL # OF EXECUTIVE MEMBERS: " << totExecs << endl
-        << "TOTAL # OF REGULAR MEMBERS: " << totRegs;
+    out << setw(30) << "\n\nTOTAL REVENUE FOR THE DAY" << ": "<< "$" <<  totalRev << endl
+        << setw(28) << "TOTAL # OF EXECUTIVE MEMBERS"  << ": "<< execList.size() << endl
+        << setw(28) << "TOTAL # OF REGULAR MEMBERS"    << ": "<< regList.size();
 
     ui->textBrowser_5->setText(QString::fromStdString(out.str()));
 }
@@ -359,9 +368,8 @@ void MainWindow::on_pushButton_10_clicked()
     float       price;
     float       totalRev = 0;
     int         quantity;
-    int         totExecs = 0;
-    int         totRegs = 0;
-    vector<QString> nameList;
+    vector<QString> execList;
+    vector<QString> regList;
 
     day3.open(QIODevice::ReadOnly);
 
@@ -382,22 +390,34 @@ void MainWindow::on_pushButton_10_clicked()
 
         accessMemList.FindMemberAndType(memNumber, memName, memType);
 
-        out << left << setw(25) << memName.toStdString() << " | "
-            << setw(19) << item.toStdString() << " | " << quantity << " |\n";
+        out << left << setw(30) << memName.toStdString() << " | "
+            << setw(26) << item.toStdString() << " | " << setw(2) << quantity << " |\n";
 
         ui->textBrowser_5->setText(QString::fromStdString(out.str()));
 
         totalRev += (price * static_cast<float>(quantity));
 
-
+        if(memType == "Executive")
+        {
+            if(execList.size() == 0 || !FindMemInstance(execList, memName))
+            {
+               execList.push_back(memName);
+            }
+        }
+        else
+        {
+            if(regList.size() == 0 || !FindMemInstance(regList, memName))
+            {
+                regList.push_back(memName);
+            }
+        }
     }
-
     day3.close();
 
     out << fixed << setprecision(2);
-    out << "\n\nTOTAL REVENUE FOR THE DAY: " << "$" <<  totalRev << endl
-        << "TOTAL # OF EXECUTIVE MEMBERS: " << totExecs << endl
-        << "TOTAL # OF REGULAR MEMBERS: " << totRegs;
+    out << setw(30) << "\n\nTOTAL REVENUE FOR THE DAY" << ": "<< "$" <<  totalRev << endl
+        << setw(28) << "TOTAL # OF EXECUTIVE MEMBERS"  << ": "<< execList.size() << endl
+        << setw(28) << "TOTAL # OF REGULAR MEMBERS"    << ": "<< regList.size();
 
     ui->textBrowser_5->setText(QString::fromStdString(out.str()));
 }
@@ -418,10 +438,8 @@ void MainWindow::on_pushButton_11_clicked()
     float       price;
     float       totalRev = 0;
     int         quantity;
-    int         totExecs = 0;
-    int         totRegs = 0;
-    vector<QString> nameExecList;
-    vector<QString> nameRegList;
+    vector<QString> execList;
+    vector<QString> regList;
 
 
     day4.open(QIODevice::ReadOnly);
@@ -443,8 +461,8 @@ void MainWindow::on_pushButton_11_clicked()
 
         accessMemList.FindMemberAndType(memNumber, memName, memType);
 
-        out << left << setw(25) << memName.toStdString() << " | "
-            << setw(19) << item.toStdString() << " | " << quantity << " |\n";
+        out << left << setw(30) << memName.toStdString() << " | "
+            << setw(26) << item.toStdString() << " | " << setw(2) << quantity << " |\n";
 
         ui->textBrowser_5->setText(QString::fromStdString(out.str()));
 
@@ -452,20 +470,25 @@ void MainWindow::on_pushButton_11_clicked()
 
         if(memType == "Executive")
         {
-            totExecs++;
+            if(execList.size() == 0 || !FindMemInstance(execList, memName))
+            {
+               execList.push_back(memName);
+            }
         }
         else
         {
-            totRegs++;
+            if(regList.size() == 0 || !FindMemInstance(regList, memName))
+            {
+                regList.push_back(memName);
+            }
         }
     }
-
     day4.close();
 
     out << fixed << setprecision(2);
-    out << "\n\nTOTAL REVENUE FOR THE DAY: " << "$" <<  totalRev << endl
-        << "TOTAL # OF EXECUTIVE MEMBERS: " << totExecs << endl
-        << "TOTAL # OF REGULAR MEMBERS: " << totRegs;
+    out << setw(30) << "\n\nTOTAL REVENUE FOR THE DAY" << ": "<< "$" <<  totalRev << endl
+        << setw(28) << "TOTAL # OF EXECUTIVE MEMBERS"  << ": "<< execList.size() << endl
+        << setw(28) << "TOTAL # OF REGULAR MEMBERS"    << ": "<< regList.size();
 
     ui->textBrowser_5->setText(QString::fromStdString(out.str()));
 }
@@ -493,14 +516,14 @@ void MainWindow::on_pushButton_5_clicked()
 
     accessSalesList.AddItem(newItem);
 
-    ui->textBrowser_6->setText(accessSalesList.GetSalesList());
+    ui->textBrowser_6->setText(accessSalesList.GetSalesListInfo());
 }
 
 void MainWindow::on_pushButton_6_clicked()
 {
     accessSalesList.DeleteItem(ui->lineEdit_9->text());
 
-    ui->textBrowser_6->setText(accessSalesList.GetSalesList());
+    ui->textBrowser_6->setText(accessSalesList.GetSalesListInfo());
 }
 
 void MainWindow::on_pushButton_ExpirationDates_clicked()
@@ -511,21 +534,22 @@ void MainWindow::on_pushButton_ExpirationDates_clicked()
 
 void MainWindow::on_pushButton_ItemReport_clicked()
 {
-    QString output;
+    ostringstream output;
     try{
      SalesInventory temp = accessSalesList.GetItem(ui->lineEdit_9->text());
-     output = temp.getSalesInfo();
+     output << left << "| "<< temp.GetItemName().toStdString() << " | $"
+            << temp.GetPrice() << " | " << temp.GetQuantity() << " |";
+
     }catch (int e)
     {
-        output = "Error while processing input -- not in list!";
+        output << "Error while processing input -- not in list!";
     }
-    ui->textBrowser_6->setText(output);
+    ui->textBrowser_6->setText(QString::fromStdString(output.str()));
 }
 
 void MainWindow::on_pushButton_MemberPurchases_clicked()
 {
-    ui->textBrowser_ExpirationDate->setText(
-                accessSalesList.GetMemberSalesList(ui->lineEdit_MemberPurchases->text().toInt()));
+    ui->textBrowser_ExpirationDate->setText(accessSalesList.GetMemberSalesList(ui->lineEdit_MemberPurchases->text().toInt()));
 }
 
 void MainWindow::on_pushButton_MembershipStatus_clicked()
@@ -533,3 +557,50 @@ void MainWindow::on_pushButton_MembershipStatus_clicked()
     ui->textBrowser_7->setText(accessMemList.GetMemberUpgrades());
     ui->textBrowser_8->setText(accessMemList.GetExecutiveDowngrades());
 }
+
+void MainWindow::UpdateMemberList()
+{
+    Member temp;
+    int id;
+
+    for(unsigned int i = 0; i < accessSalesList.GetSize(); i++)
+    {
+        id = accessSalesList.GetItem(i).GetId();
+        temp = accessMemList.GetMember(id);
+        accessMemList.DeleteMember(id);
+        temp.AddPurchase(accessSalesList.GetItem(i).GetPrice(), accessSalesList.GetItem(i).GetQuantity());
+        accessMemList.AddMember(temp);
+    }
+}
+
+void MainWindow::on_pushButton_GetRebates_clicked()
+{
+    ui->textBrowser_8->setText(accessMemList.GetRebates());
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    vector<SalesInventory> tempList;
+    float totCosts = 0;
+    QString newText;
+    ostringstream output;
+
+    accessSalesList.CopySalesList(tempList);
+
+    accessSalesList.SelectionSort(tempList, 0);
+
+    for(int i = 0; i < tempList.size(); i++)
+    {
+        newText += tempList[i].getSalesInfo();
+
+        totCosts += tempList[i].GetPrice() * tempList[i].GetQuantity();
+    }
+
+    output << fixed << setprecision(2);
+    output << "\nTOTAL COST OF ALL PURCHASES: " << totCosts;
+
+    newText += QString::fromStdString(output.str());
+
+    ui->textBrowser_6->setText(newText);
+}
+

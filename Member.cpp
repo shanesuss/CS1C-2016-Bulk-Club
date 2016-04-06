@@ -20,9 +20,11 @@ Member::Member(QString newName, int newID, Date newDate, double newTotal)
     totalSpent = newTotal;
 }
 
-void Member::AddPurchase(double newPurchase)
+void Member::AddPurchase(double newPurchase, int quantity)
 {
-    totalSpent += newPurchase;
+    totalSpent += (newPurchase * (quantity));
+
+    qDebug() << "TOTAL SPENT: " << totalSpent << '\n';
 }
 
 Date Member::GetExpirationDate() const
@@ -52,10 +54,10 @@ QString Member::GetMemberInfo() const
 {
 
     ostringstream output;
-    output  << fixed << left << "| " << setw(25) << name.toStdString()
+    output  << fixed << left << "| " << setw(30) << name.toStdString()
                 << " | "  << setw(5) << idNum << " | "
                 << setw(12) << expDate.DisplayDate() << " | "
-                <<  "$" << setprecision(2) << fixed << setw(8) << totalSpent << " |\n";
+                <<  "$" << setprecision(2) << fixed << setw(8) << totalSpent << " | ";
     return QString::fromStdString(output.str());
 }
 
@@ -94,6 +96,16 @@ void Member::SetName(QString newName)
     name = newName;
 }
 
+void Member::UpdateSales()
+{
+    double temp = 0;
+    for(unsigned int i = 0; i < purchaseList.GetSize(); i++)
+    {
+        temp += (purchaseList.GetItem(i).GetQuantity() * purchaseList.GetItem(i).GetPrice());
+    }
+    totalSpent = temp;
+}
+
 void Member::SetTotalSpent(double newTotalSpent)
 {
     totalSpent = newTotalSpent;
@@ -105,11 +117,6 @@ void Member::SetMember(QString newName, int newNum, Date newDate, double newSpen
     idNum = newNum;
     expDate = newDate;
     totalSpent = newSpent;
-}
-
-void Member::AddPurchase(SalesInventory newPurchase)
-{
-    purchaseList.AddItem(newPurchase);
 }
 
 SalesList Member::GetSalesList() const
